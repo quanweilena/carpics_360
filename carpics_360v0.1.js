@@ -619,6 +619,19 @@ var CarPicsSpinnerAPI = (function() {
                 }
             })(this));
 
+            document.getElementById(this.divId+"panoButton").addEventListener("mouseover", (function(thisObj) {
+                return function(baseEvent) {
+                    document.getElementById(thisObj.divId+"panoButton").style.background="#888";
+                    document.getElementById(thisObj.divId+"panoButton").style.color="#fff";
+                }
+            })(this));
+            document.getElementById(this.divId+"panoButton").addEventListener("mouseleave", (function(thisObj) {
+                return function(baseEvent) {
+                    document.getElementById(thisObj.divId+"panoButton").style.background="#fff";
+                    document.getElementById(thisObj.divId+"panoButton").style.color="#000";
+                }
+            })(this));
+
             document.getElementById(this.divId+"hotspot_button").addEventListener("mouseover", (function(thisObj) {
                 return function(baseEvent) {
                     document.getElementById(thisObj.divId+"hotspot_button").style.background="#888";
