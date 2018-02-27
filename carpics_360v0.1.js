@@ -726,6 +726,12 @@ var CarPicsSpinnerAPI = (function() {
                     }
                     thisObj.toggling = true;
                     thisObj.spinToToggleDoors(thisObj, thisObj.SpinPosition, true);
+                    var button = document.getElementById(thisObj.divId+"door_open_button");
+                    if (button.innerHTML == "O") {
+                        button.innerHTML = "C";
+                    } else if (button.innerHTML == "C") {
+                       button.innerHTML = "O"; 
+                    }
                 }
             })(this);
             document.getElementById(this.divId+"door_open_button").addEventListener("click", doorOpen);
@@ -1331,6 +1337,9 @@ var CarPicsSpinnerAPI = (function() {
                         overlay.onmousedown = function(event) {
                             event.stopPropagation();  // prevent spin
                         }
+                        overlay.onmouseup = function(event) {
+                            event.stopPropagation();  // prevent spin
+                        }
                         // Create full detail modal
                         var modal = document.createElement("div");
                         modal.setAttribute("id", divId+"popModal");
@@ -1357,6 +1366,9 @@ var CarPicsSpinnerAPI = (function() {
                             event.stopPropagation();  // prevent spinner zoom-in
                         }
                         modal.onmousedown = function(event) {
+                            event.stopPropagation();  // prevent spin
+                        }
+                        modal.onmouseup = function(event) {
                             event.stopPropagation();  // prevent spin
                         }
 
