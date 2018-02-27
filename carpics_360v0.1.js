@@ -144,7 +144,8 @@ var CarPicsSpinnerAPI = (function() {
             var buttonWrap = document.createElement("div");
             buttonWrap.setAttribute("id", this.divId+"buttonWrap");
             buttonWrap.style.position="absolute";
-            buttonWrap.style.top= "40%";
+            buttonWrap.style.top= "50%";
+            buttonWrap.style.transform="translate(0, -50%)";
             buttonWrap.style.right="6px";
             buttonWrap.style.zIndex="22";
             buttonWrap.style.opacity="0.8";
@@ -189,9 +190,9 @@ var CarPicsSpinnerAPI = (function() {
             zoomInButton.style.margin="4px 0";
             zoomInButton.style.cursor="pointer";
             zoomInButton.setAttribute("id", this.divId+"zoom_in_button");
-            zoomInButton.innerHTML="+";
-            zoomInButton.style.fontSize="18px";
-            zoomInButton.style.fontWeight="600";
+            var zoomInFaIcon = document.createElement("i");
+            zoomInFaIcon.className = "fas fa-search-plus";
+            zoomInButton.appendChild(zoomInFaIcon);
             buttonWrap.appendChild(zoomInButton);
             buttonWrap.appendChild(document.createElement("br"));
             // Create zoom-out-button for CarPicsSpinnerDiv
@@ -205,9 +206,9 @@ var CarPicsSpinnerAPI = (function() {
             zoomOutButton.style.margin="4px 0";
             zoomOutButton.style.cursor="pointer";
             zoomOutButton.setAttribute("id", this.divId+"zoom_out_button");
-            zoomOutButton.innerHTML="-";
-            zoomOutButton.style.fontSize="18px";
-            zoomOutButton.style.fontWeight="600";
+            var zoomOutFaIcon = document.createElement("i");
+            zoomOutFaIcon.className = "fas fa-search-minus";
+            zoomOutButton.appendChild(zoomOutFaIcon);
             buttonWrap.appendChild(zoomOutButton);
             buttonWrap.appendChild(document.createElement("br"));
             // Create hotspot-button for CarPicsSpinnerDiv
@@ -1117,7 +1118,7 @@ var CarPicsSpinnerAPI = (function() {
                 var div = document.createElement("div");
                 div.style.width="24px";  // hotspot width
                 div.style.height="24px";  // hotspot height
-                div.style.zIndex="41";
+                div.style.zIndex="21";
                 div.style.position="absolute";  // set hotspot position according to poi location
                 div.style.left=poi[i].x+"%";
                 div.style.top=poi[i].y+"%";
@@ -1296,35 +1297,6 @@ var CarPicsSpinnerAPI = (function() {
                                 listOfHotspots[j].style.display = "block";
                             }
                         };
-                        // Zoom in image
-                        element.style.maxHeight="200%";
-                        element.style.maxWidth="200%";
-                        element.style.height="200%";
-                        element.style.width="200%";
-                        var offset = element.getBoundingClientRect();
-                        var parentOffset = element.parentElement.getBoundingClientRect();
-                        var clientX = event.clientX - parentOffset.left;
-                        var clientY = event.clientY - parentOffset.top;
-                        if (poi.x<=70) {
-                            // if the hotspot is in left 70% of the image, focus to left center (25%, 50%) when zoomed in
-                            var correctX =  (-clientX + offset.left - parentOffset.left)*2 + parentOffset.width/4;
-                        } else {
-                            // focus to right center (75%, 50%) when zoomed in
-                            var correctX =  (-clientX + offset.left - parentOffset.left)*2 + parentOffset.width*3/4;
-                        }
-                        var correctY =  (-clientY + offset.top - parentOffset.top)*2 + parentOffset.height/2;
-                        if(correctX>0){
-                            correctX=0;
-                        } else if ((-correctX) > (2*offset.width-parentOffset.width)) {
-                            correctX = -(offset.width*2-parentOffset.width);
-                        }
-                        if(correctY>0){
-                            correctY=0;
-                        } else if ((-correctY) > (2*offset.height-parentOffset.height)) {
-                            correctY = -(offset.height*2-parentOffset.height);
-                        }
-                        element.style.left = correctX + 'px';
-                        element.style.top = correctY + 'px';
                         // Create a overlay to display modal
                         var overlay = document.createElement("div");
                         overlay.style.fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif";
@@ -1350,6 +1322,9 @@ var CarPicsSpinnerAPI = (function() {
                             }
                         });
                         */
+                        overlay.onclick = function(event) {
+                            event.stopPropagation();
+                        }
                         overlay.ondblclick = function(event) {
                             event.stopPropagation();  // prevent spinner zoom-in
                         }
@@ -1374,7 +1349,7 @@ var CarPicsSpinnerAPI = (function() {
                         modal.style.borderRadius="8px";
                         modal.style.cursor="default";
                         modal.style.overflow="scroll";  // Enable scroll
-                        overlay.appendChild(modal);
+
                         modal.onclick = function(event) {
                             event.stopPropagation();
                         }
@@ -1387,7 +1362,6 @@ var CarPicsSpinnerAPI = (function() {
 
                         // Define modal header section
                         var modalHead = document.createElement("div");
-                        modalHead.style.width="100%";
                         // Set modal header color based on hotspot type
                         if (poi.type == "Damage") {
                             modalHead.style.background="#CA1246";   //feature: "#0d82bf"; damage: "#CA1246"
@@ -1473,6 +1447,119 @@ var CarPicsSpinnerAPI = (function() {
                             poiNotes.style.fontSize="0.7em";
                             modalBody.appendChild(poiNotes);
                         }
+
+                        // Zoom in image
+                        element.style.maxHeight="200%";
+                        element.style.maxWidth="200%";
+                        element.style.height="200%";
+                        element.style.width="200%";
+                        var offset = element.getBoundingClientRect();
+                        var parentOffset = element.parentElement.getBoundingClientRect();
+                        var clientX = event.clientX - parentOffset.left;
+                        var clientY = event.clientY - parentOffset.top;
+                        var correctX =  (-clientX + offset.left - parentOffset.left)*2 + parentOffset.width/2;
+                        var correctY =  (-clientY + offset.top - parentOffset.top)*2 + parentOffset.height/2;
+                        if(correctX>0){
+                            correctX=0;
+                        } else if ((-correctX) > (2*offset.width-parentOffset.width)) {
+                            correctX = -(offset.width*2-parentOffset.width);
+                        }
+                        if(correctY>0){
+                            correctY=0;
+                        } else if ((-correctY) > (2*offset.height-parentOffset.height)) {
+                            correctY = -(offset.height*2-parentOffset.height);
+                        }
+                        element.style.left = correctX + 'px';
+                        element.style.top = correctY + 'px';
+                        setTimeout(function(){
+                            if (poi.x<=70) {
+                                // if the hotspot is in left 70% of the image, focus to left center (25%, 50%) when zoomed in
+                                var correctX =  (-clientX + offset.left - parentOffset.left)*2 + parentOffset.width/4;
+                            } else {
+                                // focus to right center (75%, 50%) when zoomed in
+                                var correctX =  (-clientX + offset.left - parentOffset.left)*2 + parentOffset.width*3/4;
+                            }
+                            var correctY =  (-clientY + offset.top - parentOffset.top)*2 + parentOffset.height/2;
+                            if(correctX>0){
+                                correctX=0;
+                            } else if ((-correctX) > (2*offset.width-parentOffset.width)) {
+                                correctX = -(offset.width*2-parentOffset.width);
+                            }
+                            if(correctY>0){
+                                correctY=0;
+                            } else if ((-correctY) > (2*offset.height-parentOffset.height)) {
+                                correctY = -(offset.height*2-parentOffset.height);
+                            }
+                            element.style.left = correctX + 'px';
+                            element.style.top = correctY + 'px';
+                            setTimeout(function(){
+                                // Fade animation for displaying detail modal
+                                var steps=0;
+                                modal.style.opacity=0;
+                                overlay.appendChild(modal);
+                                var timer = setInterval(function() {
+                                    steps++;
+                                    modal.style.opacity = 0.1 * steps;
+                                    if(steps >= 10) {
+                                        clearInterval(timer);
+                                        timer = undefined;
+                                    }
+                                }, 50);
+                                // Draw the line to connect hotspot and the modal
+                                var modalOffset = document.getElementById(divId+"popModal").getBoundingClientRect();
+                                var lineColor = "#0d82bf";
+                                var lineHeight = "2px";
+                                var lineStyle = "solid";
+                                if (poi.x<=70) {
+                                    // find the up-right corner of modal
+                                    // append on overlay
+                                    modalLineX = modalOffset.x-parentOffset.x;
+                                    modalLineY = modalOffset.y-parentOffset.y;
+
+                                    // start the line on right side of the hotspot in the middle
+                                    hotspotLineX = poi.x*offset.width*2/100+24+correctX;
+                                    hotspotLineY = poi.y*offset.height*2/100+12+correctY;
+                                    var line = document.createElement("div");
+                                    var lineWidth = 
+                                        Math.sqrt( (modalLineX-hotspotLineX)*(modalLineX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
+                                    line.style.position="absolute";
+                                    line.style.left=hotspotLineX+"px";
+                                    line.style.top=hotspotLineY+"px";
+                                    line.style.width=lineWidth+"px";
+                                    line.style.height="1px";
+                                    line.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
+                                    // get the rotation angle
+                                    var deg = Math.atan2(modalLineY - hotspotLineY, modalLineX - hotspotLineX) * 180 / Math.PI;
+                                    line.style.transform="rotate("+ deg + "deg)";
+                                    line.style.transformOrigin="0% 0%";
+                                    overlay.appendChild(line);
+                                } else {
+                                    // find the up-left corner of modal
+                                    // append on overlay
+                                    modalLineX = modalOffset.x-parentOffset.x+modalOffset.width;
+                                    modalLineY = modalOffset.y-parentOffset.y;
+
+                                    // start the line on left side of the hotspot in the middle
+                                    hotspotLineX = poi.x*offset.width*2/100+correctX;
+                                    hotspotLineY = poi.y*offset.height*2/100+12+correctY;
+
+                                    var line = document.createElement("div");
+                                    var lineWidth = 
+                                        Math.sqrt( (modalLineX-hotspotLineX)*(modalLineX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
+                                    line.style.position="absolute";
+                                    line.style.left=modalLineX+"px";
+                                    line.style.top=modalLineY+"px";
+                                    line.style.width=lineWidth+"px";
+                                    line.style.height="1px";
+                                    line.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
+                                    // get the rotation angle
+                                    var deg = Math.atan2(hotspotLineY - modalLineY, hotspotLineX - modalLineX) * 180 / Math.PI;
+                                    line.style.transform="rotate("+ deg + "deg)";
+                                    line.style.transformOrigin="0% 0%";
+                                    overlay.appendChild(line);
+                                }
+                            }, 500);            
+                        },500);
 
                         var offset = element.getBoundingClientRect();
                         var XOffset;
@@ -1625,6 +1712,8 @@ var CarPicsSpinnerAPI = (function() {
                 max_distance = Math.sqrt(max_distance);
                 var distance_ratio = 1 - distance/max_distance;
                 distance_ratio = distance_ratio*distance_ratio*distance_ratio*distance_ratio;
+                // Set a minimum opacity for hotspots
+                distance_ratio = (distance_ratio<=0.1?0.1:distance_ratio);
                 list[i].HTMLElement.style.opacity = distance_ratio;
             }
         }
@@ -1657,6 +1746,10 @@ var CarPicsSpinnerAPI = (function() {
             this.imgElement.style.height = "100%";
             this.imgElement.style.width = "100%";
             this.HTMLElement.style.overflow = "hidden";
+            this.HTMLElement.style.transition = "all .5s linear";
+            this.HTMLElement.style.mozTransition = "all .5s linear";
+            this.HTMLElement.style.webkitTransition = "all .5s linear";
+            this.HTMLElement.style.oTransition = "all .5s linear";
             this.HTMLElement.style.khtmlUserSelect = "none";
             this.HTMLElement.style.display = "none";
             this.HTMLElement.style.oUserSelect = "none";
