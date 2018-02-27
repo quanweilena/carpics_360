@@ -160,8 +160,9 @@ var CarPicsSpinnerAPI = (function() {
             panoButton.style.margin="4px 0";
             panoButton.style.cursor="pointer";
             panoButton.setAttribute("id", this.divId+"panoButton");
-            panoButton.style.fontSize="18px";
-            panoButton.style.fontWeight="600";
+            var panoFaIcon = document.createElement("i");
+            panoFaIcon.className = "fas fa-tachometer-alt";
+            panoButton.appendChild(panoFaIcon);
             buttonWrap.appendChild(panoButton);
             buttonWrap.appendChild(document.createElement("br"));
             // Create door_open_button for CarPicsSpinnerDiv
@@ -249,7 +250,6 @@ var CarPicsSpinnerAPI = (function() {
         } else {
             document.getElementById(this.divId+"door_open_button").innerHTML="C";  
         }
-        document.getElementById(this.divId + "panoButton").innerHTML = "P";
         /*
         * Chooses the next image to load by halfing the distance from the current cursor to the next cursor.
         * If no images need to load, move the loadcursor forward one until cursor has moved n times or has found
