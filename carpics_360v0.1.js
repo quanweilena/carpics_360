@@ -727,10 +727,10 @@ var CarPicsSpinnerAPI = (function() {
                     thisObj.toggling = true;
                     thisObj.spinToToggleDoors(thisObj, thisObj.SpinPosition, true);
                     var button = document.getElementById(thisObj.divId+"door_open_button");
-                    if (button.innerHTML == "O") {
+                    if (thisObj.displayInterior) {
                         button.innerHTML = "C";
-                    } else if (button.innerHTML == "C") {
-                       button.innerHTML = "O"; 
+                    } else {
+                        button.innerHTML = "O"; 
                     }
                 }
             })(this);
@@ -840,7 +840,9 @@ var CarPicsSpinnerAPI = (function() {
                     }
                     thisObj.spinStatus = thisObj.spinDefault;
                     thisObj.turnStatus = false;
-                    thisObj.CurrentImage.displayHotspots();
+                    if (thisObj.displayHotspots) {
+                        thisObj.CurrentImage.displayHotspots();
+                    }
                     thisObj.turning = false;
                     thisObj.spinnerDiv.style.cursor = "-webkit-grab";
                     thisObj.spinnerDiv.style.cursor = "grab";
@@ -954,7 +956,9 @@ var CarPicsSpinnerAPI = (function() {
                     thisObj.spinStatus = thisObj.spinDefault;
                     thisObj.turnStatus = false;
                     thisObj.turning = false;
-                    thisObj.CurrentImage.displayHotspots();
+                    if (thisObj.displayHotspots) {
+                        thisObj.CurrentImage.displayHotspots();
+                    }
                     thisObj.spinnerDiv.style.cursor = "-webkit-grab";
                     thisObj.spinnerDiv.style.cursor = "grab";
                     thisObj.spinnerDiv.style.cursor = "-moz-grab";
