@@ -522,7 +522,17 @@ var CarPicsSpinnerAPI = (function() {
                     baseEvent.stopPropagation();
                     CarPicsGoogleAnalytics('send', 'pageview', {'dimension1':'Click'});
                     baseEvent.preventDefault();
-                    var releaseMouse = thisObj.zoomToggle(baseEvent);
+                    var offset = document.getElementById(thisObj.divId).getBoundingClientRect();
+                    var pageX = offset.left + offset.width/2;
+                    var pageY = offset.top + offset.height/2;
+                    var centerEvent = new MouseEvent("click", {
+                        view: window,
+                        bubbles: true,
+                        cancelable: true,
+                        clientX: pageX,
+                        clientY: pageY
+                    });
+                    var releaseMouse = thisObj.zoomToggle(centerEvent);
                     if (thisObj.zoomed === true) {
                         thisObj.spinStatus = false;
                         thisObj.turnStatus = false;
