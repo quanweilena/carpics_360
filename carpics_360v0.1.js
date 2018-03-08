@@ -1156,6 +1156,7 @@ var CarPicsSpinnerAPI = (function() {
                 div.style.left=poi[i].x+"%";
                 div.style.top=poi[i].y+"%";
                 div.className="hotspot";
+                div.setAttribute("id", divId+poi[i].name+poi[i].x+poi[i].y);
                 // Set hotspot icon and color based on the type of hotspot
                 var spanElement = document.createElement("span");
                 spanElement.style.fontSize="28px";
@@ -1166,9 +1167,10 @@ var CarPicsSpinnerAPI = (function() {
                     faIcon.className = "fas fa-exclamation-triangle fa-xs";
                     spanElement.appendChild(faIcon);
                 } else {
-                    div.style.color="#09e0fa";
-                    var faIcon = document.createElement("i");
-                    faIcon.className = "fas fa-bullseye fa-sm";
+                    var faIcon = document.createElement("img");
+                    faIcon.setAttribute("src", "../blue_logo.png");
+                    faIcon.style.width = "22px";
+                    faIcon.style.height = "22px";
                     spanElement.appendChild(faIcon);
                 }
                 div.appendChild(spanElement);
@@ -1215,8 +1217,10 @@ var CarPicsSpinnerAPI = (function() {
                         modalHead.style.height="30px";
                         // Set modal header color based on hotspot type
                         if (poi.type == "Damage") {
+                            document.getElementById(divId+poi.name+poi.x+poi.y).style.color = 'red';
                             modalHead.style.background="#CA1246";   //feature: "#0d82bf"; damage: "#CA1246"
                         } else {
+                            document.getElementById(divId+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "../red_logo.png");
                             modalHead.style.background="#0d82bf";   //feature: "#0d82bf"; damage: "#CA1246"
                         }
                         modalHead.style.color="#EAEAEA";  // set header text color to be almost-white
@@ -1304,11 +1308,16 @@ var CarPicsSpinnerAPI = (function() {
                     }
                 })(this.HTMLElement, poi[i]);
                 // remove small detail modal after hover (on mouse leave)
-                div.onmouseout = (function(){
+                div.onmouseout = (function(element, poi){
                     return function(){
                         if (document.getElementById(divId+"modalHover")){
                             document.getElementById(divId+"modalHover").remove();
                         };
+                        if (poi.type == "Damage") {
+                            document.getElementById(divId+poi.name+poi.x+poi.y).style.color ="#fffb00";
+                        } else {
+                            document.getElementById(divId+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "../blue_logo.png");
+                        }
                     }
                 })(this.HTMLElement, poi[i]);
                 // // Display full detail modal when click on hotspot
