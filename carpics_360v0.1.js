@@ -560,6 +560,10 @@ var CarPicsSpinnerAPI = (function() {
                     )(thisObj);
                     document.getElementById(thisObj.divId).addEventListener('touchstart', touchMove);
                     document.getElementById(thisObj.divId).addEventListener('touchend', function(){
+                        thisObj.CurrentImage.HTMLElement.style.transition = "all .5s linear";
+                        thisObj.CurrentImage.HTMLElement.style.mozTransition = "all .5s linear";
+                        thisObj.CurrentImage.HTMLElement.style.webkitTransition = "all .5s linear";
+                        thisObj.CurrentImage.HTMLElement.style.oTransition = "all .5s linear";
                         document.getElementById(thisObj.divId).removeEventListener('touchend', touchMove);
                     });
                     document.getElementById(thisObj.divId).addEventListener('touchmove', (
@@ -576,6 +580,10 @@ var CarPicsSpinnerAPI = (function() {
                                 var currentXPosition = touch.pageX;
                                 var currentYPosition = touch.pageY;
                                 if (thisInternal.zoomed == true) {
+                                    thisObj.CurrentImage.HTMLElement.style.transition = "none";
+                                    thisObj.CurrentImage.HTMLElement.style.mozTransition = "none";
+                                    thisObj.CurrentImage.HTMLElement.style.webkitTransition = "none";
+                                    thisObj.CurrentImage.HTMLElement.style.oTransition = "none";
                                     thisInternal.CurrentImage.dragMove(touch, thisInternal.CurrentImage.HTMLElement.getBoundingClientRect(),
                                         false,thisInternal.mouseXPosition, thisInternal.mouseYPosition,thisInternal.lastXPosition, thisInternal.lastYPosition);
                                     thisInternal.lastXPosition = touch.clientX;
@@ -851,6 +859,10 @@ var CarPicsSpinnerAPI = (function() {
             */
             document.addEventListener("mouseup", (function(thisObj) {
                 return function(baseEvent) {
+                    thisObj.CurrentImage.HTMLElement.style.transition = "all .5s linear";
+                    thisObj.CurrentImage.HTMLElement.style.mozTransition = "all .5s linear";
+                    thisObj.CurrentImage.HTMLElement.style.webkitTransition = "all .5s linear";
+                    thisObj.CurrentImage.HTMLElement.style.oTransition = "all .5s linear";
                     if(thisObj.panoramaView){
                         return;
                     }
@@ -887,6 +899,10 @@ var CarPicsSpinnerAPI = (function() {
                     var currentXPosition = baseEvent.pageX;
                     var currentYPosition = baseEvent.pageY;
                     if (thisObj.zoomed == true && thisObj.mouseHold) {
+                        thisObj.CurrentImage.HTMLElement.style.transition = "none";
+                        thisObj.CurrentImage.HTMLElement.style.mozTransition = "none";
+                        thisObj.CurrentImage.HTMLElement.style.webkitTransition = "none";
+                        thisObj.CurrentImage.HTMLElement.style.oTransition = "none";
                         if(thisObj.multiZoom){
                             //return;
                         }
@@ -1019,6 +1035,9 @@ var CarPicsSpinnerAPI = (function() {
         this.zoom = function(baseEvent) {
             var offset = this.HTMLElement.getBoundingClientRect();
             this.zoomIntensity=this.zoomIntensity*2;
+            if (this.zoomIntensity > 4) {
+                return;
+            }
             this.HTMLElement.style.maxHeight = this.zoomIntensity+"00%";
             this.HTMLElement.style.maxWidth = this.zoomIntensity+"00%";
             this.HTMLElement.style.height = this.zoomIntensity+"00%";
@@ -1452,6 +1471,10 @@ var CarPicsSpinnerAPI = (function() {
                             element.style.width="100%";
                             element.style.left=0+"px";
                             element.style.top=0+"px";
+                            thisObj.CurrentImage.zoomIntensity = 1; // reset zoomIntensity
+                            thisObj.zoomed = false;
+                            document.getElementById(thisObj.divId+"zoom_in_button").style.background="#fff";
+                            document.getElementById(thisObj.divId+"zoom_in_button").style.color="#000";
                         });
                         modalHeadIcons.appendChild(modalCancelIcon);
 
@@ -1495,48 +1518,63 @@ var CarPicsSpinnerAPI = (function() {
                             poiNotes.style.fontSize="0.7em";
                             modalBody.appendChild(poiNotes);
                         }
-
-                        // Zoom in image
-                        element.style.maxHeight="200%";
-                        element.style.maxWidth="200%";
-                        element.style.height="200%";
-                        element.style.width="200%";
+                        // zoom in (or zoom out) image to 2x large of original size and move to desired position
                         var offset = element.getBoundingClientRect();
                         var parentOffset = element.parentElement.getBoundingClientRect();
-                        var clientX = event.clientX - parentOffset.left;
-                        var clientY = event.clientY - parentOffset.top;
-                        var correctX =  (-clientX + offset.left - parentOffset.left)*2 + parentOffset.width/2;
-                        var correctY =  (-clientY + offset.top - parentOffset.top)*2 + parentOffset.height/2;
+                        var multiplier = 1;
+                        if (thisObj.zoomed == false || (thisObj.zoomed == true && thisObj.CurrentImage.zoomIntensity > 2) ) {
+                            element.style.maxHeight="200%";
+                            element.style.maxWidth="200%";
+                            element.style.height="200%";
+                            element.style.width="200%";
+                            offset.width = 2*offset.width/thisObj.CurrentImage.zoomIntensity;
+                            offset.height = 2*offset.height/thisObj.CurrentImage.zoomIntensity;
+                            if (thisObj.zoomed == false) {
+                                var clientX = event.clientX - parentOffset.left;
+                                var clientY = event.clientY - parentOffset.top;
+                                multiplier = 2;
+                            } else if (thisObj.zoomed == true && thisObj.CurrentImage.zoomIntensity > 2) {
+                                var clientX = poi.x*offset.width/100 - parentOffset.left+offset.left + 12;
+                                var clientY = poi.y*offset.height/100 - parentOffset.top+offset.top + 12;
+                            }
+                            thisObj.zoomed = true;
+                            thisObj.CurrentImage.zoomIntensity = 2;
+                        } else if (thisObj.zoomed == true && thisObj.CurrentImage.zoomIntensity == 2) {
+                            var clientX = poi.x*offset.width/100 - parentOffset.left+offset.left + 12;
+                            var clientY = poi.y*offset.height/100 - parentOffset.top+offset.top + 12;
+                        }
+                        var correctX =  (-clientX + offset.left - parentOffset.left)*multiplier + parentOffset.width/2;
+                        var correctY =  (-clientY + offset.top - parentOffset.top)*multiplier + parentOffset.height/2;
                         if(correctX>0){
                             correctX=0;
-                        } else if ((-correctX) > (2*offset.width-parentOffset.width)) {
-                            correctX = -(offset.width*2-parentOffset.width);
+                        } else if ((-correctX) > (offset.width-parentOffset.width)) {
+                            correctX = -(offset.width-parentOffset.width);
                         }
                         if(correctY>0){
                             correctY=0;
-                        } else if ((-correctY) > (2*offset.height-parentOffset.height)) {
-                            correctY = -(offset.height*2-parentOffset.height);
+                        } else if ((-correctY) > (offset.height-parentOffset.height)) {
+                            correctY = -(offset.height-parentOffset.height);
                         }
                         element.style.left = correctX + 'px';
                         element.style.top = correctY + 'px';
                         setTimeout(function(){
                             if (poi.x<=70) {
                                 // if the hotspot is in left 70% of the image, focus to left center (25%, 50%) when zoomed in
-                                var correctX =  (-clientX + offset.left - parentOffset.left)*2 + parentOffset.width/4;
+                                var correctX =  (-clientX + offset.left - parentOffset.left)*multiplier + parentOffset.width/4;
                             } else {
                                 // focus to right center (75%, 50%) when zoomed in
-                                var correctX =  (-clientX + offset.left - parentOffset.left)*2 + parentOffset.width*3/4;
+                                var correctX =  (-clientX + offset.left - parentOffset.left)*multiplier + parentOffset.width*3/4;
                             }
-                            var correctY =  (-clientY + offset.top - parentOffset.top)*2 + parentOffset.height/2;
+                            var correctY =  (-clientY + offset.top - parentOffset.top)*multiplier + parentOffset.height/2;
                             if(correctX>0){
                                 correctX=0;
-                            } else if ((-correctX) > (2*offset.width-parentOffset.width)) {
-                                correctX = -(offset.width*2-parentOffset.width);
+                            } else if ((-correctX) > (offset.width-parentOffset.width)) {
+                                correctX = -(offset.width-parentOffset.width);
                             }
                             if(correctY>0){
                                 correctY=0;
-                            } else if ((-correctY) > (2*offset.height-parentOffset.height)) {
-                                correctY = -(offset.height*2-parentOffset.height);
+                            } else if ((-correctY) > (offset.height-parentOffset.height)) {
+                                correctY = -(offset.height-parentOffset.height);
                             }
                             element.style.left = correctX + 'px';
                             element.style.top = correctY + 'px';
@@ -1558,6 +1596,7 @@ var CarPicsSpinnerAPI = (function() {
                                 var lineColor = "#0d82bf";
                                 var lineHeight = "2px";
                                 var lineStyle = "solid";
+                                var lineRatio = 0.25; // The ratio of horizontal line
                                 if (poi.x<=70) {
                                     // find the up-right corner of modal
                                     // append on overlay
@@ -1565,11 +1604,16 @@ var CarPicsSpinnerAPI = (function() {
                                     modalLineY = modalOffset.y-parentOffset.y;
 
                                     // start the line on right side of the hotspot in the middle
-                                    hotspotLineX = poi.x*offset.width*2/100+24+correctX;
-                                    hotspotLineY = poi.y*offset.height*2/100+12+correctY;
+                                    hotspotLineX = poi.x*offset.width/100+24+correctX;
+                                    hotspotLineY = poi.y*offset.height/100+12+correctY;
+
+                                    middleX = modalLineX - (modalLineX-hotspotLineX)*lineRatio;
+                                    middleY = modalLineY;
+
                                     var line = document.createElement("div");
                                     var lineWidth = 
-                                        Math.sqrt( (modalLineX-hotspotLineX)*(modalLineX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
+                                        // Math.sqrt( (modalLineX-hotspotLineX)*(modalLineX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
+                                        Math.sqrt( (middleX-hotspotLineX)*(middleX-hotspotLineX) + (middleY-hotspotLineY)*(middleY-hotspotLineY) );
                                     line.style.position="absolute";
                                     line.style.left=hotspotLineX+"px";
                                     line.style.top=hotspotLineY+"px";
@@ -1577,160 +1621,75 @@ var CarPicsSpinnerAPI = (function() {
                                     line.style.height="1px";
                                     line.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
                                     // get the rotation angle
-                                    var deg = Math.atan2(modalLineY - hotspotLineY, modalLineX - hotspotLineX) * 180 / Math.PI;
+                                    // var deg = Math.atan2(modalLineY - hotspotLineY, modalLineX - hotspotLineX) * 180 / Math.PI;
+                                    var deg = Math.atan2(middleY - hotspotLineY, middleX - hotspotLineX) * 180 / Math.PI;
                                     line.style.transform="rotate("+ deg + "deg)";
                                     line.style.transformOrigin="0% 0%";
                                     overlay.appendChild(line);
+                                    var horizontalLine = document.createElement("div");
+                                    var horLineWidth = (modalLineX-hotspotLineX)*lineRatio;
+                                    horizontalLine.style.position="absolute";
+                                    horizontalLine.style.left=middleX+"px";
+                                    horizontalLine.style.top=middleY+"px";
+                                    horizontalLine.style.width=horLineWidth+"px";
+                                    horizontalLine.style.height="1px";
+                                    horizontalLine.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
+                                    overlay.appendChild(horizontalLine);
                                 } else {
                                     // find the up-left corner of modal
                                     // append on overlay
-                                    modalLineX = modalOffset.x-parentOffset.x+modalOffset.width;
+                                    modalLineX = modalOffset.x-parentOffset.x+modalOffset.width-5;
                                     modalLineY = modalOffset.y-parentOffset.y;
 
                                     // start the line on left side of the hotspot in the middle
-                                    hotspotLineX = poi.x*offset.width*2/100+correctX;
-                                    hotspotLineY = poi.y*offset.height*2/100+12+correctY;
+                                    hotspotLineX = poi.x*offset.width/100+correctX;
+                                    hotspotLineY = poi.y*offset.height/100+12+correctY;
+
+                                    middleX = modalLineX + (hotspotLineX-modalLineX)*lineRatio;
+                                    middleY = modalLineY;
 
                                     var line = document.createElement("div");
                                     var lineWidth = 
-                                        Math.sqrt( (modalLineX-hotspotLineX)*(modalLineX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
+                                        // Math.sqrt( (modalLineX-hotspotLineX)*(modalLineX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
+                                        Math.sqrt( (middleX-hotspotLineX)*(middleX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
                                     line.style.position="absolute";
-                                    line.style.left=modalLineX+"px";
-                                    line.style.top=modalLineY+"px";
+                                    line.style.left=middleX+"px";
+                                    line.style.top=middleY+"px";
                                     line.style.width=lineWidth+"px";
                                     line.style.height="1px";
                                     line.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
                                     // get the rotation angle
-                                    var deg = Math.atan2(hotspotLineY - modalLineY, hotspotLineX - modalLineX) * 180 / Math.PI;
+                                    // var deg = Math.atan2(hotspotLineY - modalLineY, hotspotLineX - modalLineX) * 180 / Math.PI;
+                                    var deg = Math.atan2(hotspotLineY - modalLineY, hotspotLineX - middleX) * 180 / Math.PI;
                                     line.style.transform="rotate("+ deg + "deg)";
                                     line.style.transformOrigin="0% 0%";
                                     overlay.appendChild(line);
+                                    var horizontalLine = document.createElement("div");
+                                    var horLineWidth = (hotspotLineX-modalLineX)*lineRatio;
+                                    horizontalLine.style.position="absolute";
+                                    horizontalLine.style.left=modalLineX+"px";
+                                    horizontalLine.style.top=modalLineY+"px";
+                                    horizontalLine.style.width=horLineWidth+"px";
+                                    horizontalLine.style.height="1px";
+                                    horizontalLine.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
+                                    overlay.appendChild(horizontalLine);
                                 }
                             }, 500);            
                         },500);
-
-                        var offset = element.getBoundingClientRect();
-                        var XOffset;
-                        var YOffset;
-                        if (poi.x > offset.left && poi.y < (offset.left + offset.width) && poi.y > offset.top && poi.y < (offset.top + offset.height)) {
-                            XOffset = offset.left - poi.x;
-                            YOffset = offset.top - poi.y;
-                        } else {
-                            return;
-                        }
-                        element.style.left = XOffset / document.documentElement.clientWidth * 100 + 'vw';
-                        element.style.top = YOffset / document.documentElement.clientWidth * 100 + 'vw';
+                        
+                        // var offset = element.getBoundingClientRect();
+                        // var XOffset;
+                        // var YOffset;
+                        // if (poi.x > offset.left && poi.y < (offset.left + offset.width) && poi.y > offset.top && poi.y < (offset.top + offset.height)) {
+                        //     XOffset = offset.left - poi.x;
+                        //     YOffset = offset.top - poi.y;
+                        // } else {
+                        //     return;
+                        // }
+                        // element.style.left = XOffset / document.documentElement.clientWidth * 100 + 'vw';
+                        // element.style.top = YOffset / document.documentElement.clientWidth * 100 + 'vw';
                     }
                 })(this.HTMLElement, poi[i]);
-                // // Modal version 2: cover the whole image
-                // div.onclick = (function(element,poi){
-                //     return function(event){
-                //         event.stopPropagation();
-                //         var overlay = document.createElement("div");
-                //         overlay.style.fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif";
-                //         overlay.setAttribute("id", "popModalContainer");
-                //         overlay.style.position="absolute";
-                //         overlay.style.width="100%";
-                //         overlay.style.height="100%";
-                //         overlay.style.zIndex="32";
-                //         overlay.style.background="#00000088";
-                //         element.parentElement.insertBefore(overlay,element);
-                //         // close modal when user click outside modal
-                //         overlay.onclick = (function(e){
-                //             if(e.target.id=="popModalContainer"){
-                //                 document.getElementById("popModalContainer").remove();
-                //             }
-                //         });
-
-                //         var modal = document.createElement("div");
-                //         modal.style.lineHeight="1.414";
-                //         modal.setAttribute("id", "popModal");
-                //         modal.style.width="100%";
-                //         modal.style.height="100%";
-                //         modal.style.background="rgba(255, 255, 255, 0.88)";
-                //         modal.style.cursor="default !important";
-                //         modal.style.overflow="hidden";
-                //         overlay.appendChild(modal);
-
-                //         var modalHead = document.createElement("div");
-                //         modalHead.style.height="40px";
-                //         modalHead.innerHTML=poi.name;
-                //         modalHead.style.color="#000";
-                //         modalHead.style.fontSize="1.2em";
-                //         modalHead.style.padding="6px 15px";
-                //         modalHead.style.textAlign="center";
-                //         modal.appendChild(modalHead);
-
-                //         var modalImage = document.createElement("div");
-                //         modalImage.style.width="62%";
-                //         modalImage.style.float="left";
-                //         modalImage.style.padding="1% 1%";
-                //         modal.appendChild(modalImage);
-
-                //         var modalInfo = document.createElement("div");
-                //         modalInfo.style.width="34%";
-                //         modalInfo.style.overflow="hidden";
-                //         modalInfo.style.height="80%";
-                //         modalInfo.style.padding="1% 1% 1% 0";
-                //         modal.appendChild(modalInfo);
-
-                //         var modalHeadIcons = document.createElement("span");
-                //         modalHeadIcons.style.float="right";
-                //         modal.style.cursor="pointer";
-                //         modalHead.appendChild(modalHeadIcons);
-
-                //             var modalCancelIcon = document.createElement("span");
-                //             modalCancelIcon.innerHTML="&#10005";
-                //             modalCancelIcon.onclick=(function(overlay){
-                //                 document.getElementById("popModalContainer").remove();
-                //             });
-                //             modalHeadIcons.appendChild(modalCancelIcon);
-
-                //         var ghr = document.createElement("hr");
-                //         ghr.style.border="0";
-                //         ghr.style.height="1px";
-                //         ghr.style.margin="5px 0";
-                //         ghr.style.backgroundImage="linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))";
-                //         modalHead.appendChild(ghr);
-
-                //         var modalBody = document.createElement("div");
-                //         modalBody.style.padding="15px 0px";
-                //         modalBody.style.overflow="scroll";
-                //         modalBody.style.maxHeight="80%";
-                //         modalInfo.appendChild(modalBody);
-
-                //         var img = new Image();
-                //         img.src=poi.sourceUrl;
-                //         img.style.width="90%";
-                //         img.style.height="auto";
-                //         img.style.marginTop="16px";
-                //         img.style.marginLeft="16px";
-                //         img.style.border="1px solid #ddd";
-                //         img.style.padding="4px";
-                //         img.style.borderRadius="4px";
-                //         modalImage.appendChild(img);
-
-                //         var poiNotes = document.createElement("div");
-                //         poiNotes.innerHTML=poi.notes;
-                //         poiNotes.style.color="#000";
-                //         poiNotes.style.letterSpacing="0.3px";
-                //         poiNotes.style.fontWeight="200";
-                //         poiNotes.style.whiteSpace="pre-line";
-                //         modalBody.appendChild(poiNotes);
-
-                //         var offset = element.getBoundingClientRect();
-                //         var XOffset;
-                //         var YOffset;
-                //         if (poi.x > offset.left && poi.y < (offset.left + offset.width) && poi.y > offset.top && poi.y < (offset.top + offset.height)) {
-                //             XOffset = offset.left - poi.x;
-                //             YOffset = offset.top - poi.y;
-                //         } else {
-                //             return;
-                //         }
-                //         this.HTMLElement.style.left = XOffset / document.documentElement.clientWidth * 100 + 'vw';
-                //         this.HTMLElement.style.top = YOffset / document.documentElement.clientWidth * 100 + 'vw';
-                //     }
-                // })(this.HTMLElement, poi[i]);
                 this.HTMLElement.appendChild(div);
                 // Hide hotspots if needed
                 if (displayHotspots == false) {
