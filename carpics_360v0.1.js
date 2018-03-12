@@ -113,6 +113,7 @@ var CarPicsSpinnerAPI = (function() {
         this.zoomed = false;
         this.spinSensitivity = parseInt(config.spinSensitivity) > 0 ? parseInt(config.spinSensitivity) : 5;
         this.direction = config.autospinDirection || 1;
+        this.displayFullOpacity = false;
         if (config.spinOnLoad == "false") {
             this.spinDefault = config.autospin == "true" || false;
         } else {
@@ -230,15 +231,19 @@ var CarPicsSpinnerAPI = (function() {
         // Set icon for hotspot_button
         this.addControlButtons(this.spinnerDiv);
         if (this.displayHotspots === true) {
-            var poiFaIcon = document.createElement("i");
-            poiFaIcon.className = "fas fa-eye";
-            document.getElementById(this.divId+"hotspot_button").appendChild(poiFaIcon);
-            // document.getElementById(this.divId+"hotspot_button").innerHTML="&#8984";  //"&#8984" is the unicode for "place of interest"
+            if (this.displayFullOpacity == false) {
+                var poiFaIcon = document.createElement("i");
+                poiFaIcon.className = "fas fa-eye";
+                document.getElementById(this.divId+"hotspot_button").appendChild(poiFaIcon);
+            } else if (this.displayFullOpacity == true) {
+                var poiFaIcon = document.createElement("i");
+                poiFaIcon.className = "fas fa-sun";
+                document.getElementById(this.divId+"hotspot_button").appendChild(poiFaIcon);
+            }
         } else {
             var poiFaIcon = document.createElement("i");
             poiFaIcon.className = "fas fa-eye-slash";
             document.getElementById(this.divId+"hotspot_button").appendChild(poiFaIcon);
-            // document.getElementById(this.divId+"hotspot_button").innerHTML="&#8709";  //"&#8709" is the unicode for "empty set"
         }
         if (config.displayDoorOpen === "true") {
             this.displayDoorOpen = true;
@@ -246,9 +251,21 @@ var CarPicsSpinnerAPI = (function() {
             this.displayDoorOpen = false;
         }
         if (this.displayDoorOpen === true) {
-            document.getElementById(this.divId+"door_open_button").innerHTML="O";  
-        } else {
-            document.getElementById(this.divId+"door_open_button").innerHTML="C";  
+            var img = document.createElement("img");
+            img.style.width = "20px";
+            img.style.height = "20px";
+            img.style.marginTop = "3px";
+            img.style.marginLeft = "-3px";
+            img.setAttribute("src", "../carOpenBlack.png");
+            document.getElementById(this.divId+"door_open_button").appendChild(img);
+        } else { 
+            var img = document.createElement("img");
+            img.style.width = "20px";
+            img.style.height = "20px";
+            img.style.marginTop = "3px";
+            img.style.marginLeft = "-3px";
+            img.setAttribute("src", "../carCloseBlack.png");
+            document.getElementById(this.divId+"door_open_button").appendChild(img);
         }
         /*
         * Chooses the next image to load by halfing the distance from the current cursor to the next cursor.
@@ -666,13 +683,23 @@ var CarPicsSpinnerAPI = (function() {
             document.getElementById(this.divId+"door_open_button").addEventListener("mouseover", (function(thisObj) {
                 return function(baseEvent) {
                     document.getElementById(thisObj.divId+"door_open_button").style.background="#888";
-                    document.getElementById(thisObj.divId+"door_open_button").style.color="#fff";
+                    var button = document.getElementById(thisObj.divId+"door_open_button");
+                    if (thisObj.displayDoorOpen) {
+                        button.getElementsByTagName("img")[0].setAttribute("src", "../carOpenWhite.png");
+                    } else {
+                        button.getElementsByTagName("img")[0].setAttribute("src", "../carCloseWhite.png");
+                    }
                 }
             })(this));
             document.getElementById(this.divId+"door_open_button").addEventListener("mouseleave", (function(thisObj) {
                 return function(baseEvent) {
                     document.getElementById(thisObj.divId+"door_open_button").style.background="#fff";
-                    document.getElementById(thisObj.divId+"door_open_button").style.color="#000";
+                    var button = document.getElementById(thisObj.divId+"door_open_button");
+                    if (thisObj.displayDoorOpen) {
+                        button.getElementsByTagName("img")[0].setAttribute("src", "../carOpenBlack.png");
+                    } else {
+                        button.getElementsByTagName("img")[0].setAttribute("src", "../carCloseBlack.png");
+                    }
                 }
             })(this));
 
@@ -711,37 +738,45 @@ var CarPicsSpinnerAPI = (function() {
                     baseEvent.stopPropagation();
                     CarPicsGoogleAnalytics('send', 'pageview', {'dimension1':'Click'});
                     baseEvent.preventDefault();
-                    if (thisObj.displayHotspots == true) {
-                        // hide hotspots
-                        var currentDiv = document.getElementById(thisObj.divId);
-                        var hotspots = currentDiv.getElementsByClassName("hotspot");
+                    var currentDiv = document.getElementById(thisObj.divId);
+                    var hotspots = currentDiv.getElementsByClassName("hotspot");
+                    var buttonElement = document.getElementById(thisObj.divId+"hotspot_button");
+                    var poiFaIcon = document.createElement("i");
+                    if (thisObj.displayHotspots == true && thisObj.displayFullOpacity == false) {
+                        // current display hotspots with opacity change => full opacity
+                        for (var i = 0; i < hotspots.length; i++) {
+                            hotspots[i].style.opacity = "1";
+                        }
+                        thisObj.displayFullOpacity = true;
+                        while (buttonElement.firstChild) {
+                            buttonElement.removeChild(buttonElement.firstChild);
+                        }
+                        poiFaIcon.className = "fas fa-sun";
+                    } else if (thisObj.displayHotspots == true && thisObj.displayFullOpacity == true) {
+                        // current display hotspots with full opacity => hide all hotspots
                         for (var i = 0; i < hotspots.length; i++) {
                             hotspots[i].style.display = "none";
                         }
                         thisObj.displayHotspots = false;
-                        var buttonElement = document.getElementById(thisObj.divId+"hotspot_button");
+                        thisObj.displayFullOpacity = false;
+                        
                         while (buttonElement.firstChild) {
                             buttonElement.removeChild(buttonElement.firstChild);
                         }
-                        var poiFaIcon = document.createElement("i");
                         poiFaIcon.className = "fas fa-eye-slash";
-                        buttonElement.appendChild(poiFaIcon);
                     } else {
-                        // display hotspots
-                        var currentDiv = document.getElementById(thisObj.divId);
-                        var hotspots = currentDiv.getElementsByClassName("hotspot");
+                        // current display no hotspots => display hotspots with opacity change
                         for (var i = 0; i < hotspots.length; i++) {
                             hotspots[i].style.display = "block";
                         }
                         thisObj.displayHotspots = true;
-                        var buttonElement = document.getElementById(thisObj.divId+"hotspot_button");
+                        thisObj.displayFullOpacity = false;
                         while (buttonElement.firstChild) {
                             buttonElement.removeChild(buttonElement.firstChild);
                         }
-                        var poiFaIcon = document.createElement("i");
                         poiFaIcon.className = "fas fa-eye";
-                        buttonElement.appendChild(poiFaIcon);
-                    }
+                    };
+                    buttonElement.appendChild(poiFaIcon);
                 }
             })(this);
             document.getElementById(this.divId+"hotspot_button").addEventListener("click", toggleHotspots);
@@ -758,11 +793,12 @@ var CarPicsSpinnerAPI = (function() {
                     thisObj.toggling = true;
                     thisObj.spinToToggleDoors(thisObj, thisObj.SpinPosition, true);
                     var button = document.getElementById(thisObj.divId+"door_open_button");
-                    if (thisObj.displayInterior) {
-                        button.innerHTML = "C";
+                    if (thisObj.displayDoorOpen) {
+                        button.getElementsByTagName("img")[0].setAttribute("src", "../carCloseWhite.png");
                     } else {
-                        button.innerHTML = "O"; 
+                        button.getElementsByTagName("img")[0].setAttribute("src", "../carOpenWhite.png");
                     }
+                    thisObj.displayDoorOpen = !thisObj.displayDoorOpen;
                 }
             })(this);
             document.getElementById(this.divId+"door_open_button").addEventListener("click", doorOpen);
@@ -850,7 +886,7 @@ var CarPicsSpinnerAPI = (function() {
                     if(thisObj.panoramaView){
                         return;
                     }
-                    var list = thisObj.CurrentImage.updateOpacity(baseEvent);
+                    var list = thisObj.CurrentImage.updateOpacity(baseEvent, thisObj.displayFullOpacity);
                 }
             })(this));
 
@@ -1697,7 +1733,10 @@ var CarPicsSpinnerAPI = (function() {
         this.getPointsOfInterest = function() {
             return this.listOfPointsOfInterest;
         }
-        this.updateOpacity = function(baseEvent){
+        this.updateOpacity = function(baseEvent, fullOpacity){
+            if (fullOpacity) {
+                return;
+            }
             var spinnerDivPosition = this.HTMLElement.parentElement.getBoundingClientRect();
             var imgPosition = this.HTMLElement.getBoundingClientRect();
             var list = this.listOfPointsOfInterest;
