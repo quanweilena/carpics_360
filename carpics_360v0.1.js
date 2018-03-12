@@ -560,10 +560,10 @@ var CarPicsSpinnerAPI = (function() {
                     )(thisObj);
                     document.getElementById(thisObj.divId).addEventListener('touchstart', touchMove);
                     document.getElementById(thisObj.divId).addEventListener('touchend', function(){
-                        thisObj.CurrentImage.HTMLElement.style.transition = "all .5s linear";
-                        thisObj.CurrentImage.HTMLElement.style.mozTransition = "all .5s linear";
-                        thisObj.CurrentImage.HTMLElement.style.webkitTransition = "all .5s linear";
-                        thisObj.CurrentImage.HTMLElement.style.oTransition = "all .5s linear";
+                        thisObj.CurrentImage.HTMLElement.style.transition = "all 0.5s linear";
+                        thisObj.CurrentImage.HTMLElement.style.mozTransition = "all 0.5s linear";
+                        thisObj.CurrentImage.HTMLElement.style.webkitTransition = "all 0.5s linear";
+                        thisObj.CurrentImage.HTMLElement.style.oTransition = "all 0.5s linear";
                         document.getElementById(thisObj.divId).removeEventListener('touchend', touchMove);
                     });
                     document.getElementById(thisObj.divId).addEventListener('touchmove', (
@@ -859,10 +859,10 @@ var CarPicsSpinnerAPI = (function() {
             */
             document.addEventListener("mouseup", (function(thisObj) {
                 return function(baseEvent) {
-                    thisObj.CurrentImage.HTMLElement.style.transition = "all .5s linear";
-                    thisObj.CurrentImage.HTMLElement.style.mozTransition = "all .5s linear";
-                    thisObj.CurrentImage.HTMLElement.style.webkitTransition = "all .5s linear";
-                    thisObj.CurrentImage.HTMLElement.style.oTransition = "all .5s linear";
+                    thisObj.CurrentImage.HTMLElement.style.transition = "all 0.5s linear";
+                    thisObj.CurrentImage.HTMLElement.style.mozTransition = "all 0.5s linear";
+                    thisObj.CurrentImage.HTMLElement.style.webkitTransition = "all 0.5s linear";
+                    thisObj.CurrentImage.HTMLElement.style.oTransition = "all 0.5s linear";
                     if(thisObj.panoramaView){
                         return;
                     }
@@ -1344,6 +1344,10 @@ var CarPicsSpinnerAPI = (function() {
                 div.onclick = (function(element,poi){
                     return function(event){
                         event.stopPropagation();
+                        element.style.transition = "left 0.5s linear, top 0.5s ease-in, width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                        element.style.mozTransition = "left 0.5s linear, top 0.5s ease-in, width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                        element.style.webkitTransition = "left 0.5s linear, top 0.5s ease-in, width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                        element.style.oTransition = "left 0.5s linear, top 0.5s ease-in, width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
                         if (document.getElementById(divId+"modalHover")) {
                             // Remove hover modal of hotspot if exists
                             document.getElementById(divId+"modalHover").remove();
@@ -1543,7 +1547,14 @@ var CarPicsSpinnerAPI = (function() {
                             var clientX = poi.x*offset.width/100 - parentOffset.left+offset.left + 12;
                             var clientY = poi.y*offset.height/100 - parentOffset.top+offset.top + 12;
                         }
-                        var correctX =  (-clientX + offset.left - parentOffset.left)*multiplier + parentOffset.width/2;
+
+                        if (poi.x<=70) {
+                            // if the hotspot is in left 70% of the image, focus to left center (25%, 50%) when zoomed in
+                            var correctX =  (-clientX + offset.left - parentOffset.left)*multiplier + parentOffset.width/4;
+                        } else {
+                            // focus to right center (75%, 50%) when zoomed in
+                            var correctX =  (-clientX + offset.left - parentOffset.left)*multiplier + parentOffset.width*3/4;
+                        }
                         var correctY =  (-clientY + offset.top - parentOffset.top)*multiplier + parentOffset.height/2;
                         if(correctX>0){
                             correctX=0;
@@ -1558,124 +1569,106 @@ var CarPicsSpinnerAPI = (function() {
                         element.style.left = correctX + 'px';
                         element.style.top = correctY + 'px';
                         setTimeout(function(){
-                            if (poi.x<=70) {
-                                // if the hotspot is in left 70% of the image, focus to left center (25%, 50%) when zoomed in
-                                var correctX =  (-clientX + offset.left - parentOffset.left)*multiplier + parentOffset.width/4;
-                            } else {
-                                // focus to right center (75%, 50%) when zoomed in
-                                var correctX =  (-clientX + offset.left - parentOffset.left)*multiplier + parentOffset.width*3/4;
-                            }
-                            var correctY =  (-clientY + offset.top - parentOffset.top)*multiplier + parentOffset.height/2;
-                            if(correctX>0){
-                                correctX=0;
-                            } else if ((-correctX) > (offset.width-parentOffset.width)) {
-                                correctX = -(offset.width-parentOffset.width);
-                            }
-                            if(correctY>0){
-                                correctY=0;
-                            } else if ((-correctY) > (offset.height-parentOffset.height)) {
-                                correctY = -(offset.height-parentOffset.height);
-                            }
-                            element.style.left = correctX + 'px';
-                            element.style.top = correctY + 'px';
-                            setTimeout(function(){
-                                // Fade animation for displaying detail modal
-                                var steps=0;
-                                modal.style.opacity=0;
-                                overlay.appendChild(modal);
-                                var timer = setInterval(function() {
-                                    steps++;
-                                    modal.style.opacity = 0.1 * steps;
-                                    if(steps >= 10) {
-                                        clearInterval(timer);
-                                        timer = undefined;
-                                    }
-                                }, 50);
-                                // Draw the line to connect hotspot and the modal
-                                var modalOffset = document.getElementById(divId+"popModal").getBoundingClientRect();
-                                var lineColor = "#0d82bf";
-                                var lineHeight = "2px";
-                                var lineStyle = "solid";
-                                var lineRatio = 0.25; // The ratio of horizontal line
-                                if (poi.x<=70) {
-                                    // find the up-right corner of modal
-                                    // append on overlay
-                                    modalLineX = modalOffset.x-parentOffset.x;
-                                    modalLineY = modalOffset.y-parentOffset.y;
-
-                                    // start the line on right side of the hotspot in the middle
-                                    hotspotLineX = poi.x*offset.width/100+24+correctX;
-                                    hotspotLineY = poi.y*offset.height/100+12+correctY;
-
-                                    middleX = modalLineX - (modalLineX-hotspotLineX)*lineRatio;
-                                    middleY = modalLineY;
-
-                                    var line = document.createElement("div");
-                                    var lineWidth = 
-                                        // Math.sqrt( (modalLineX-hotspotLineX)*(modalLineX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
-                                        Math.sqrt( (middleX-hotspotLineX)*(middleX-hotspotLineX) + (middleY-hotspotLineY)*(middleY-hotspotLineY) );
-                                    line.style.position="absolute";
-                                    line.style.left=hotspotLineX+"px";
-                                    line.style.top=hotspotLineY+"px";
-                                    line.style.width=lineWidth+"px";
-                                    line.style.height="1px";
-                                    line.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
-                                    // get the rotation angle
-                                    // var deg = Math.atan2(modalLineY - hotspotLineY, modalLineX - hotspotLineX) * 180 / Math.PI;
-                                    var deg = Math.atan2(middleY - hotspotLineY, middleX - hotspotLineX) * 180 / Math.PI;
-                                    line.style.transform="rotate("+ deg + "deg)";
-                                    line.style.transformOrigin="0% 0%";
-                                    overlay.appendChild(line);
-                                    var horizontalLine = document.createElement("div");
-                                    var horLineWidth = (modalLineX-hotspotLineX)*lineRatio;
-                                    horizontalLine.style.position="absolute";
-                                    horizontalLine.style.left=middleX+"px";
-                                    horizontalLine.style.top=middleY+"px";
-                                    horizontalLine.style.width=horLineWidth+"px";
-                                    horizontalLine.style.height="1px";
-                                    horizontalLine.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
-                                    overlay.appendChild(horizontalLine);
-                                } else {
-                                    // find the up-left corner of modal
-                                    // append on overlay
-                                    modalLineX = modalOffset.x-parentOffset.x+modalOffset.width-5;
-                                    modalLineY = modalOffset.y-parentOffset.y;
-
-                                    // start the line on left side of the hotspot in the middle
-                                    hotspotLineX = poi.x*offset.width/100+correctX;
-                                    hotspotLineY = poi.y*offset.height/100+12+correctY;
-
-                                    middleX = modalLineX + (hotspotLineX-modalLineX)*lineRatio;
-                                    middleY = modalLineY;
-
-                                    var line = document.createElement("div");
-                                    var lineWidth = 
-                                        // Math.sqrt( (modalLineX-hotspotLineX)*(modalLineX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
-                                        Math.sqrt( (middleX-hotspotLineX)*(middleX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
-                                    line.style.position="absolute";
-                                    line.style.left=middleX+"px";
-                                    line.style.top=middleY+"px";
-                                    line.style.width=lineWidth+"px";
-                                    line.style.height="1px";
-                                    line.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
-                                    // get the rotation angle
-                                    // var deg = Math.atan2(hotspotLineY - modalLineY, hotspotLineX - modalLineX) * 180 / Math.PI;
-                                    var deg = Math.atan2(hotspotLineY - modalLineY, hotspotLineX - middleX) * 180 / Math.PI;
-                                    line.style.transform="rotate("+ deg + "deg)";
-                                    line.style.transformOrigin="0% 0%";
-                                    overlay.appendChild(line);
-                                    var horizontalLine = document.createElement("div");
-                                    var horLineWidth = (hotspotLineX-modalLineX)*lineRatio;
-                                    horizontalLine.style.position="absolute";
-                                    horizontalLine.style.left=modalLineX+"px";
-                                    horizontalLine.style.top=modalLineY+"px";
-                                    horizontalLine.style.width=horLineWidth+"px";
-                                    horizontalLine.style.height="1px";
-                                    horizontalLine.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
-                                    overlay.appendChild(horizontalLine);
+                            // Fade animation for displaying detail modal
+                            var steps=0;
+                            modal.style.opacity=0;
+                            overlay.appendChild(modal);
+                            var timer = setInterval(function() {
+                                steps++;
+                                modal.style.opacity = 0.1 * steps;
+                                if(steps >= 10) {
+                                    clearInterval(timer);
+                                    timer = undefined;
                                 }
-                            }, 500);            
-                        },500);
+                            }, 50);
+                            // Draw the line to connect hotspot and the modal
+                            var modalOffset = document.getElementById(divId+"popModal").getBoundingClientRect();
+                            var lineColor = "#0d82bf";
+                            var lineHeight = "2px";
+                            var lineStyle = "solid";
+                            var lineRatio = 0.25; // The ratio of horizontal line
+                            if (poi.x<=70) {
+                                // find the up-right corner of modal
+                                // append on overlay
+                                modalLineX = modalOffset.x-parentOffset.x;
+                                modalLineY = modalOffset.y-parentOffset.y;
+
+                                // start the line on right side of the hotspot in the middle
+                                hotspotLineX = poi.x*offset.width/100+24+correctX;
+                                hotspotLineY = poi.y*offset.height/100+12+correctY;
+
+                                middleX = modalLineX - (modalLineX-hotspotLineX)*lineRatio;
+                                middleY = modalLineY;
+
+                                var line = document.createElement("div");
+                                var lineWidth = 
+                                    // Math.sqrt( (modalLineX-hotspotLineX)*(modalLineX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
+                                    Math.sqrt( (middleX-hotspotLineX)*(middleX-hotspotLineX) + (middleY-hotspotLineY)*(middleY-hotspotLineY) );
+                                line.style.position="absolute";
+                                line.style.left=hotspotLineX+"px";
+                                line.style.top=hotspotLineY+"px";
+                                line.style.width=lineWidth+"px";
+                                line.style.height="1px";
+                                line.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
+                                // get the rotation angle
+                                // var deg = Math.atan2(modalLineY - hotspotLineY, modalLineX - hotspotLineX) * 180 / Math.PI;
+                                var deg = Math.atan2(middleY - hotspotLineY, middleX - hotspotLineX) * 180 / Math.PI;
+                                line.style.transform="rotate("+ deg + "deg)";
+                                line.style.transformOrigin="0% 0%";
+                                overlay.appendChild(line);
+                                var horizontalLine = document.createElement("div");
+                                var horLineWidth = (modalLineX-hotspotLineX)*lineRatio;
+                                horizontalLine.style.position="absolute";
+                                horizontalLine.style.left=middleX+"px";
+                                horizontalLine.style.top=middleY+"px";
+                                horizontalLine.style.width=horLineWidth+"px";
+                                horizontalLine.style.height="1px";
+                                horizontalLine.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
+                                overlay.appendChild(horizontalLine);
+                            } else {
+                                // find the up-left corner of modal
+                                // append on overlay
+                                modalLineX = modalOffset.x-parentOffset.x+modalOffset.width-5;
+                                modalLineY = modalOffset.y-parentOffset.y;
+
+                                // start the line on left side of the hotspot in the middle
+                                hotspotLineX = poi.x*offset.width/100+correctX;
+                                hotspotLineY = poi.y*offset.height/100+12+correctY;
+
+                                middleX = modalLineX + (hotspotLineX-modalLineX)*lineRatio;
+                                middleY = modalLineY;
+
+                                var line = document.createElement("div");
+                                var lineWidth = 
+                                    // Math.sqrt( (modalLineX-hotspotLineX)*(modalLineX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
+                                    Math.sqrt( (middleX-hotspotLineX)*(middleX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
+                                line.style.position="absolute";
+                                line.style.left=middleX+"px";
+                                line.style.top=middleY+"px";
+                                line.style.width=lineWidth+"px";
+                                line.style.height="1px";
+                                line.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
+                                // get the rotation angle
+                                // var deg = Math.atan2(hotspotLineY - modalLineY, hotspotLineX - modalLineX) * 180 / Math.PI;
+                                var deg = Math.atan2(hotspotLineY - modalLineY, hotspotLineX - middleX) * 180 / Math.PI;
+                                line.style.transform="rotate("+ deg + "deg)";
+                                line.style.transformOrigin="0% 0%";
+                                overlay.appendChild(line);
+                                var horizontalLine = document.createElement("div");
+                                var horLineWidth = (hotspotLineX-modalLineX)*lineRatio;
+                                horizontalLine.style.position="absolute";
+                                horizontalLine.style.left=modalLineX+"px";
+                                horizontalLine.style.top=modalLineY+"px";
+                                horizontalLine.style.width=horLineWidth+"px";
+                                horizontalLine.style.height="1px";
+                                horizontalLine.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
+                                overlay.appendChild(horizontalLine);
+                            }
+                            element.style.transition = "all 0.5s linear";
+                            element.style.mozTransition = "all 0.5s linear";
+                            element.style.webkitTransition = "all 0.5s linear";
+                            element.style.oTransition = "all 0.5s linear";
+                        }, 500);            
                         
                         // var offset = element.getBoundingClientRect();
                         // var XOffset;
@@ -1753,10 +1746,10 @@ var CarPicsSpinnerAPI = (function() {
             this.imgElement.style.height = "100%";
             this.imgElement.style.width = "100%";
             this.HTMLElement.style.overflow = "hidden";
-            this.HTMLElement.style.transition = "all .5s linear";
-            this.HTMLElement.style.mozTransition = "all .5s linear";
-            this.HTMLElement.style.webkitTransition = "all .5s linear";
-            this.HTMLElement.style.oTransition = "all .5s linear";
+            this.HTMLElement.style.transition = "all 0.5s linear";
+            this.HTMLElement.style.mozTransition = "all 0.5s linear";
+            this.HTMLElement.style.webkitTransition = "all 0.5s linear";
+            this.HTMLElement.style.oTransition = "all 0.5s linear";
             this.HTMLElement.style.khtmlUserSelect = "none";
             this.HTMLElement.style.display = "none";
             this.HTMLElement.style.oUserSelect = "none";
