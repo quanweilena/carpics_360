@@ -75,7 +75,7 @@ var CarPicsSpinnerAPI = (function() {
             }
         }
         xhttp.open("get", "https://feed.carpics2p0.com/rest/spinner/s3?dealer=" 
-            + config.sourceURL.dealer + "&vin=" + config.sourceURL.vin);
+            + config.sourceURL.dealer + "&vin=" + config.sourceURL.vin + "DO");
         xhttp.send();
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange=function(){
@@ -90,7 +90,7 @@ var CarPicsSpinnerAPI = (function() {
             }
         }
         xhttp.open("get", "https://feed.carpics2p0.com/rest/spinner/s3?dealer=" 
-            + config.sourceURL.dealer + "&vin=" + "ICTO");
+            + config.sourceURL.dealer + "&vin=" + config.sourceURL.vin + "DC");
         xhttp.send();
         this.insertPlaceholder = function(){
             var element = document.getElementById(this.divId);
@@ -740,12 +740,45 @@ var CarPicsSpinnerAPI = (function() {
                     baseEvent.preventDefault();
                     var currentDiv = document.getElementById(thisObj.divId);
                     var hotspots = currentDiv.getElementsByClassName("hotspot");
+                    var titleModals = currentDiv.getElementsByClassName(""+thisObj.divId+"hotspotsFullOpacityModal");
                     var buttonElement = document.getElementById(thisObj.divId+"hotspot_button");
                     var poiFaIcon = document.createElement("i");
                     if (thisObj.displayHotspots == true && thisObj.displayFullOpacity == false) {
                         // current display hotspots with opacity change => full opacity
                         for (var i = 0; i < hotspots.length; i++) {
                             hotspots[i].style.opacity = "1";
+                            var modal = document.createElement("div");
+                            modal.style.fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif";
+                            modal.style.position="absolute";
+                            modal.className=""+thisObj.divId+"hotspotsFullOpacityModal";
+                            modal.setAttribute("id", hotspots[i].getAttribute("id")+"TitleModal");
+                            modal.style.left=hotspots[i].style.left;
+                            modal.style.top=hotspots[i].style.top;
+                            modal.style.margin="-20px 0 0 20px";
+                            modal.style.height="24px";
+                            modal.style.width="auto";
+                            modal.style.borderRadius="5px";
+                            modal.style.zIndex="32";  // display modal above image & hotspot & control buttons
+                            modal.style.opacity="0.85";  // set modal opacity
+                            modal.style.overflow="hidden";
+                            modal.style.boxShadow="2px 2px 4px 0px rgba(82, 82, 82, 0.75)";
+                            modal.style.lineHeight="24px";
+                            modal.style.fontSize="0.7em";
+                            modal.style.fontWeight="300";
+                            modal.style.letterSpacing="0.4px";
+                            // Set modal header color based on hotspot type
+                            if (hotspots[i].getAttribute("data-hotspot-type") == "Damage") {
+                                modal.style.background="#CA1246";   //feature: "#0d82bf"; damage: "#CA1246"
+                            } else {
+                                modal.style.background="#0d82bf";   //feature: "#0d82bf"; damage: "#CA1246"
+                            }
+                            modal.style.color="#EAEAEA";  // set header text color to be almost-white
+                            var modalText = document.createElement("span");
+                            modalText.innerHTML=hotspots[i].getAttribute("data-hotspot-title");  // Display the name of hotspot on modal header
+                            modalText.style.marginLeft="6px";
+                            modalText.style.marginRight="6px";
+                            modal.appendChild(modalText);
+                            hotspots[i].parentNode.appendChild(modal);
                         }
                         thisObj.displayFullOpacity = true;
                         while (buttonElement.firstChild) {
@@ -756,6 +789,9 @@ var CarPicsSpinnerAPI = (function() {
                         // current display hotspots with full opacity => hide all hotspots
                         for (var i = 0; i < hotspots.length; i++) {
                             hotspots[i].style.display = "none";
+                        }
+                        while (titleModals.length>0) {
+                            titleModals[0].parentNode.removeChild(titleModals[0]);
                         }
                         thisObj.displayHotspots = false;
                         thisObj.displayFullOpacity = false;
@@ -768,6 +804,9 @@ var CarPicsSpinnerAPI = (function() {
                         // current display no hotspots => display hotspots with opacity change
                         for (var i = 0; i < hotspots.length; i++) {
                             hotspots[i].style.display = "block";
+                        }
+                        while (titleModals.length>0) {
+                            titleModals[0].parentNode.removeChild(titleModals[0]);
                         }
                         thisObj.displayHotspots = true;
                         thisObj.displayFullOpacity = false;
@@ -822,7 +861,7 @@ var CarPicsSpinnerAPI = (function() {
                             thisObj.spinnerDiv.appendChild(thisObj.panoramaDiv);
                             pannellum.viewer(thisObj.divId + "pano", {
                                 "type": "equirectangular",
-                                "panorama": "http://resources.carpics2p0.com/Panorama/panorama.jpg"
+                                "panorama": "https://s3-us-west-2.amazonaws.com/cdn.carpics2p0.com/SpinTest/Ready/autostamp/used/LINDZ_Test_Used/32.jpg"
                             });
                         } else {
                             thisObj.spinnerDiv.appendChild(thisObj.panoramaDiv);
@@ -836,13 +875,15 @@ var CarPicsSpinnerAPI = (function() {
             //document.getElementById(this.divId+"panoButton").addEventListener("touchstart", panoramaFunction);
 
             this.spinToToggleDoors = function(thisObj, spinPosition, switched){
+                var doorRatio = document.getElementById("doorSwitch").value;
                 setTimeout(function(){
                     var toSwitch = switched;
                     var test = thisObj.SpinPosition;
                     if(thisObj.SpinPosition<spinPosition){
                         test = test + 1;
                     }
-                    if (Math.abs(test - spinPosition)>.75 && toSwitch){
+                    if (Math.abs(test - spinPosition)>doorRatio && toSwitch){
+                        console.log(doorRatio);
                         toSwitch = false;
                         thisObj.CurrentImage.HTMLElement.style.display = "none";
                         if(thisObj.displayInterior){
@@ -1211,6 +1252,8 @@ var CarPicsSpinnerAPI = (function() {
                 div.style.left=poi[i].x+"%";
                 div.style.top=poi[i].y+"%";
                 div.className="hotspot";
+                div.setAttribute("data-hotspot-title", poi[i].name);
+                div.setAttribute("data-hotspot-type", poi[i].type);
                 div.setAttribute("id", divId+poi[i].name+poi[i].x+poi[i].y);
                 // Set hotspot icon and color based on the type of hotspot
                 var spanElement = document.createElement("span");
@@ -1233,133 +1276,39 @@ var CarPicsSpinnerAPI = (function() {
                 div.onmouseover = (function(element, poi){
                     return function(e){
                         e.stopPropagation();
-                        var position = element.parentNode.getBoundingClientRect();
-                        var modalWidth=position.width/4;  // define the max-width of modal according to CarPicsSpinnerDiv width
-                        var modalHeight=position.height/2.2;  //// define the max-height of modal according to CarPicsSpinnerDiv height
                         var modal = document.createElement("div");
                         modal.style.fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif";
-                        modal.style.lineHeight="1.414";
                         modal.style.position="absolute";
-                        modal.style.margin="auto";
                         modal.setAttribute("id", divId+"modalHover");
-                        // Adjust the position of modal based on the position of hotspot in CarPicsSpinnerDiv
-                        if (e.clientX-position.left<position.width-modalWidth-125){
-                            modal.style.left=(e.clientX-position.left)+"px";
-                            modal.style.marginLeft="50px";
-                        } else {
-                            modal.style.right=(position.width+position.left-e.clientX)+"px";
-                            modal.style.marginRight="50px";
-                        }
-                        if (e.clientY-position.top<position.height-modalHeight-25){
-                            modal.style.top=(e.clientY-position.top)+"px";
-                            modal.style.marginTop="10px";
-                        } else {
-                            modal.style.bottom=(position.height+position.top-e.clientY)+"px";
-                            modal.style.marginBottom="10px";
-                        }
-                        modal.style.width=modalWidth+"px";
-                        modal.style.maxHeight=modalHeight+"px";
-                        modal.style.background="#fff";  // set modal background color
+                        modal.style.left=poi.x + "%";
+                        modal.style.top=poi.y + "%";
+                        modal.style.margin="-20px 0 0 20px";
+                        modal.style.height="24px";
+                        modal.style.width="auto";
                         modal.style.borderRadius="5px";
                         modal.style.zIndex="32";  // display modal above image & hotspot & control buttons
-                        modal.style.opacity="0.95";  // set modal opacity
+                        modal.style.opacity="0.85";  // set modal opacity
                         modal.style.overflow="hidden";
                         modal.style.boxShadow="2px 2px 4px 0px rgba(82, 82, 82, 0.75)";
-                        element.parentElement.insertBefore(modal,element);
-
-                        // Define modal header section
-                        var modalHead = document.createElement("div");
-                        modalHead.style.height="30px";
+                        modal.style.lineHeight="24px";
+                        modal.style.fontSize="0.7em";
+                        modal.style.fontWeight="300";
+                        modal.style.letterSpacing="0.4px";
                         // Set modal header color based on hotspot type
                         if (poi.type == "Damage") {
                             document.getElementById(divId+poi.name+poi.x+poi.y).style.color = 'red';
-                            modalHead.style.background="#CA1246";   //feature: "#0d82bf"; damage: "#CA1246"
+                            modal.style.background="#CA1246";   //feature: "#0d82bf"; damage: "#CA1246"
                         } else {
                             document.getElementById(divId+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "../red_logo.png");
-                            modalHead.style.background="#0d82bf";   //feature: "#0d82bf"; damage: "#CA1246"
+                            modal.style.background="#0d82bf";   //feature: "#0d82bf"; damage: "#CA1246"
                         }
-                        modalHead.style.color="#EAEAEA";  // set header text color to be almost-white
-                        modalHead.style.borderRadius="5px 5px 0px 0px";
-                        modalHead.style.fontSize="1em";
-                        modalHead.style.lineHeight="30px";  // make header text vertically middle
-                        modal.appendChild(modalHead);
-                        var modalHeadText = document.createElement("span");
-                        modalHeadText.style.marginLeft="10px";
-                        modalHeadText.innerHTML=poi.name;  // Display the name of hotspot on modal header
-                        modalHead.appendChild(modalHeadText);
-
-                        // Define modal body section
-                        var modalBody = document.createElement("div");
-                        modalBody.style.padding="10px";
-                        modal.appendChild(modalBody);
-                        // Display detail image (if provided)
-                        if (poi.sourceUrl!=="" && typeof poi.sourceUrl!=="undefined") {
-                            // distinguish if the url is for image or video(mp4)
-                            var format = poi.sourceUrl.split(".");
-                            format = format[format.length-1];
-                            if (format==="mp4"||format==="MP4"||format==="MOV"||format==="MOV") {
-                                // video
-                                var video = document.createElement("VIDEO");
-                                if (video.canPlayType("video/mp4")) {
-                                    video.setAttribute("src",poi.sourceUrl);
-                                } else {
-                                    // error handling
-                                }
-                                video.setAttribute("width", "100%");
-                                video.setAttribute("height", "100%");
-                                video.style.marginBottom="10px";
-                                modalBody.appendChild(video);
-                            } else {
-                                // image
-                                var img = new Image();
-                                img.src=poi.sourceUrl;  // display the detail image of this hotspot
-                                img.style.width="100%";
-                                img.style.height="100%";
-                                img.style.marginBottom="10px";
-                                modalBody.appendChild(img);
-                            }
-                        }
-                        // Display and style notes (if provided)
-                        if (poi.notes!=="" && typeof poi.notes!=="undefined"){
-                            var poiNotes = document.createElement("div");
-                            poiNotes.setAttribute("id", "poiNotes");
-                            poiNotes.style.fontSize="0.75em";
-                            poiNotes.innerHTML=poi.notes;  // display the notes of this hotspot
-                            poiNotes.style.whiteSpace="pre-line";  // keep the line-breaks
-                            poiNotes.style.overflow="hidden";
-                            poiNotes.style.maxHeight="3em";
-                            poiNotes.style.display="-webkit-box";
-                            poiNotes.style['-webkit-line-clamp']=2;  // only display the first two lines 
-                            poiNotes.style['-webkit-box-orient']="vertical";  // if some texts were hidden, indicate with '...'
-                            modalBody.appendChild(poiNotes);
-                        }
-
-                        // if modal size is too small, adjust content size & padding
-                        if (modalHeight<200 && modalHeight>140){
-                            modalHead.style.height="24px";
-                            modalHead.style.lineHeight="24px";
-                            modalHead.style.fontSize="0.85em";
-                            modalHeadText.style.marginLeft="6px";
-                            modalBody.style.padding="6px";
-                            if (typeof img !== "undefined") {
-                                img.style.marginBottom="5px";
-                            }
-                            if (typeof poiNotes !== "undefined"){
-                                poiNotes.style.fontSize="0.7em";
-                            }
-                        } else if (modalHeight<=140) {
-                            // If the modal size is way too small, only display the name of hotspot
-                            modalHead.style.height="24px";
-                            modal.style.width="auto";
-                            modalHead.style.lineHeight="24px";
-                            modalHead.style.fontSize="0.7em";
-                            modalHead.style.fontWeight="300";
-                            modalHead.style.letterSpacing="0.4px";
-                            modalHeadText.style.marginLeft="6px";
-                            modalHeadText.style.marginRight="6px";
-                            modalHead.style.borderRadius="5px";
-                            modal.removeChild(modalBody);
-                        }
+                        modal.style.color="#EAEAEA";  // set header text color to be almost-white
+                        var modalText = document.createElement("span");
+                        modalText.innerHTML=poi.name;  // Display the name of hotspot on modal header
+                        modalText.style.marginLeft="6px";
+                        modalText.style.marginRight="6px";
+                        modal.appendChild(modalText);
+                        element.appendChild(modal);
                     }
                 })(this.HTMLElement, poi[i]);
                 // remove small detail modal after hover (on mouse leave)
@@ -1380,10 +1329,35 @@ var CarPicsSpinnerAPI = (function() {
                 div.onclick = (function(element,poi){
                     return function(event){
                         event.stopPropagation();
-                        element.style.transition = "left 0.5s linear, top 0.5s ease-in, width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
-                        element.style.mozTransition = "left 0.5s linear, top 0.5s ease-in, width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
-                        element.style.webkitTransition = "left 0.5s linear, top 0.5s ease-in, width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
-                        element.style.oTransition = "left 0.5s linear, top 0.5s ease-in, width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                        var leftParam1 = document.getElementById("left1").value;
+                        var leftParam2 = document.getElementById("left2").value;
+                        var leftParam3 = document.getElementById("left3").value;
+                        var leftParam4 = document.getElementById("left4").value;
+                        var topParam1 = document.getElementById("top1").value;
+                        var topParam2 = document.getElementById("top2").value;
+                        var topParam3 = document.getElementById("top3").value;
+                        var topParam4 = document.getElementById("top4").value;
+                        var leftAnimation = "cubic-bezier("+leftParam1+","+leftParam2+","+leftParam3+","+leftParam4+")";
+                        var topAnimation = "cubic-bezier("+topParam1+","+topParam2+","+topParam3+","+topParam4+")";
+                        var leftParam1Out = 1 - leftParam3;
+                        var leftParam2Out = 1 - leftParam4;
+                        var leftParam3Out = 1 - leftParam1;
+                        var leftParam4Out = 1 - leftParam2;
+                        var topParam1Out = 1 - topParam3;
+                        var topParam2Out = 1 - topParam4;
+                        var topParam3Out = 1 - topParam1;
+                        var topParam4Out = 1 - topParam2;
+                        var leftAnimationOut = "cubic-bezier("+leftParam1Out+","+leftParam2Out+","+leftParam3Out+","+leftParam4Out+")";
+                        var topAnimationOut = "cubic-bezier("+topParam1Out+","+topParam2Out+","+topParam3Out+","+topParam4Out+")";
+
+                        element.style.transition = "left 0.5s " + leftAnimation + ", top 0.5s " + topAnimation + ", width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                        element.style.mozTransition = "left 0.5s " + leftAnimation + ", top 0.5s " + topAnimation + ", width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                        element.style.webkitTransition = "left 0.5s " + leftAnimation + ", top 0.5s " + topAnimation + ", width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                        element.style.oTransition = "left 0.5s " + leftAnimation + ", top 0.5s " + topAnimation + ", width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                        // element.style.transition = "left 0.5s linear, top 0.5s ease-in, width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                        // element.style.mozTransition = "left 0.5s linear, top 0.5s ease-in, width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                        // element.style.webkitTransition = "left 0.5s linear, top 0.5s ease-in, width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                        // element.style.oTransition = "left 0.5s linear, top 0.5s ease-in, width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
                         if (document.getElementById(divId+"modalHover")) {
                             // Remove hover modal of hotspot if exists
                             document.getElementById(divId+"modalHover").remove();
@@ -1493,6 +1467,7 @@ var CarPicsSpinnerAPI = (function() {
                         // Create a cancel button on modal header to close modal
                         var modalCancelIcon = document.createElement("span");
                         modalCancelIcon.innerHTML="&#10005";  // Set icon to be 'x'
+                        modalCancelIcon.setAttribute("id", divId+"modalCancelIcon");
                         // close modal when pressing on cancel button
                         modalCancelIcon.onclick=(function(overlay){
                             document.getElementById(divId+"popModalContainer").remove();
@@ -1700,23 +1675,11 @@ var CarPicsSpinnerAPI = (function() {
                                 horizontalLine.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
                                 overlay.appendChild(horizontalLine);
                             }
-                            element.style.transition = "all 0.5s linear";
-                            element.style.mozTransition = "all 0.5s linear";
-                            element.style.webkitTransition = "all 0.5s linear";
-                            element.style.oTransition = "all 0.5s linear";
-                        }, 500);            
-                        
-                        // var offset = element.getBoundingClientRect();
-                        // var XOffset;
-                        // var YOffset;
-                        // if (poi.x > offset.left && poi.y < (offset.left + offset.width) && poi.y > offset.top && poi.y < (offset.top + offset.height)) {
-                        //     XOffset = offset.left - poi.x;
-                        //     YOffset = offset.top - poi.y;
-                        // } else {
-                        //     return;
-                        // }
-                        // element.style.left = XOffset / document.documentElement.clientWidth * 100 + 'vw';
-                        // element.style.top = YOffset / document.documentElement.clientWidth * 100 + 'vw';
+                            element.style.transition = "left 0.5s " + leftAnimationOut + ", top 0.5s " + topAnimationOut + ", width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                            element.style.mozTransition = "left 0.5s " + leftAnimationOut + ", top 0.5s " + topAnimationOut + ", width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                            element.style.webkitTransition = "left 0.5s " + leftAnimationOut + ", top 0.5s " + topAnimationOut + ", width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                            element.style.oTransition = "left 0.5s " + leftAnimationOut + ", top 0.5s " + topAnimationOut + ", width 0.5s linear, height 0.5s linear, max-width 0.5s linear, max-height 0.5s linear";
+                        }, 500);
                     }
                 })(this.HTMLElement, poi[i]);
                 this.HTMLElement.appendChild(div);
@@ -1761,11 +1724,19 @@ var CarPicsSpinnerAPI = (function() {
             for (var i=0;i<this.listOfPointsOfInterest.length;i++){
                 this.listOfPointsOfInterest[i].HTMLElement.style.display = "none";
             }
+            var titleModals = document.getElementsByClassName(""+thisObj.divId+"hotspotsFullOpacityModal");
+            for (var j=0;j<titleModals.length;j++){
+                titleModals[j].style.display = "none";
+            }
         }
 
         this.displayHotspots = function(){
             for (var i=0;i<this.listOfPointsOfInterest.length;i++){
                 this.listOfPointsOfInterest[i].HTMLElement.style.display = "block";
+            }
+            var titleModals = document.getElementsByClassName(""+thisObj.divId+"hotspotsFullOpacityModal");
+            for (var j=0;j<titleModals.length;j++){
+                titleModals[j].style.display = "block";
             }
         }
 

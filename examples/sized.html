@@ -30,9 +30,42 @@
             border: 2px solid #fff;
          }
       </style>
+      <div style="position: absolute; left: 0; top: 30px; height: 500px; width: 200px; background: pink; padding: 10px;">
+        <div>
+          <label for="doorSwitch">Door switch time</label>
+          <input type="range" min="0" max="1" name="doorSwitch" id="doorSwitch" value="0.75" oninput="doorSwitchOutputId.value = doorSwitch.value" step="0.01">
+          <output name="doorSwitchOutput" id="doorSwitchOutputId">0.75</output>
+          <br><br>
+          <label for="left1">Animation left 1</label>
+          <input type="range" min="0" max="1" name="left1" id="left1" value="0" oninput="left1OutputId.value = left1.value" step="0.01">
+          <output name="left1Output" id="left1OutputId">0</output>
+          <label for="left2">Animation left 2</label>
+          <input type="range" min="0" max="1" name="left2" id="left2" value="0" oninput="left2OutputId.value = left2.value" step="0.01">
+          <output name="left2Output" id="left2OutputId">0</output>
+          <label for="left3">Animation left 3</label>
+          <input type="range" min="0" max="1" name="left3" id="left3" value="1" oninput="left3OutputId.value = left3.value" step="0.01">
+          <output name="left3Output" id="left3OutputId">1</output>
+          <label for="left4">Animation left 4</label>
+          <input type="range" min="0" max="1" name="left4" id="left4" value="1" oninput="left4OutputId.value = left4.value" step="0.01">
+          <output name="left4Output" id="left4OutputId">1</output>
+          <br><br>
+          <label for="top1">Animation top 1</label>
+          <input type="range" min="0" max="1" name="top1" id="top1" value="0.4" oninput="top1OutputId.value = top1.value" step="0.01">
+          <output name="top1Output" id="top1OutputId">0.4</output>
+          <label for="top2">Animation top 2</label>
+          <input type="range" min="0" max="1" name="top2" id="top2" value="0" oninput="top2OutputId.value = top2.value" step="0.01">
+          <output name="top2Output" id="top2OutputId">0</output>
+          <label for="top3">Animation top 3</label>
+          <input type="range" min="0" max="1" name="top3" id="top3" value="1" oninput="top3OutputId.value = top3.value" step="0.01">
+          <output name="top3Output" id="top3OutputId">1</output>
+          <label for="top4">Animation top 4</label>
+          <input type="range" min="0" max="1" name="top4" id="top4" value="1" oninput="top4OutputId.value = top4.value" step="0.01">
+          <output name="top4Output" id="top4OutputId">1</output>
+        </div>
+      </div>
       <div style="height: 100vh; width: 100vw; background: url(../examples/background.png) no-repeat;background-size: 100% 100%; display: flex; align-items: center; justify-content: center;">
          <div style="width: 60vw;">
-            <div id="georgecarmichael" class="carPicsSpinner displayStyle" vin="ICTC" dealer="001" style="position: relative; height: 45vw;" displayHotspots="true" enableInertialMove="true" spinSensitivity="25">
+            <div id="georgecarmichael" class="carPicsSpinner displayStyle" vin="LINDZ" dealer="001" style="position: relative; height: 45vw;" displayHotspots="true" enableInertialMove="true" spinSensitivity="25">
             </div>
             <div style="text-align: center; color: #fff; text-shadow: none; margin-top: 0.5em;">
                <h1><span></span>CAR MEDIA 2.0 360</h1>
