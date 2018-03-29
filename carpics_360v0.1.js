@@ -75,7 +75,7 @@ var CarPicsSpinnerAPI = (function() {
             }
         }
         xhttp.open("get", "https://feed.carpics2p0.com/rest/spinner/s3?dealer=" 
-            + config.sourceURL.dealer + "&vin=" + config.sourceURL.vin + "DO");
+            + config.sourceURL.dealer + "&vin=" + config.sourceURL.vin + "-DC");
         xhttp.send();
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange=function(){
@@ -90,7 +90,7 @@ var CarPicsSpinnerAPI = (function() {
             }
         }
         xhttp.open("get", "https://feed.carpics2p0.com/rest/spinner/s3?dealer=" 
-            + config.sourceURL.dealer + "&vin=" + config.sourceURL.vin + "DC");
+            + config.sourceURL.dealer + "&vin=" + config.sourceURL.vin + "-DO");
         xhttp.send();
         this.insertPlaceholder = function(){
             var element = document.getElementById(this.divId);
@@ -767,10 +767,13 @@ var CarPicsSpinnerAPI = (function() {
                             modal.style.fontWeight="300";
                             modal.style.letterSpacing="0.4px";
                             // Set modal header color based on hotspot type
+                            // feature: "#0d82bf"; damage: "#CA1246"; info : "#ec9434"
                             if (hotspots[i].getAttribute("data-hotspot-type") == "Damage") {
-                                modal.style.background="#CA1246";   //feature: "#0d82bf"; damage: "#CA1246"
-                            } else {
-                                modal.style.background="#0d82bf";   //feature: "#0d82bf"; damage: "#CA1246"
+                                modal.style.background="#CA1246";
+                            } else if (hotspots[i].getAttribute("data-hotspot-type") == "Feature") {
+                                modal.style.background="#0d82bf";
+                            } else if (hotspots[i].getAttribute("data-hotspot-type") == "Info") {
+                                modal.style.background="#ec9434";
                             }
                             modal.style.color="#EAEAEA";  // set header text color to be almost-white
                             var modalText = document.createElement("span");
@@ -1264,11 +1267,16 @@ var CarPicsSpinnerAPI = (function() {
                     var faIcon = document.createElement("i");
                     faIcon.className = "fas fa-exclamation-triangle fa-xs";
                     spanElement.appendChild(faIcon);
-                } else {
+                } else if (poi[i].type == "Feature") {
                     var faIcon = document.createElement("img");
                     faIcon.setAttribute("src", "../blue_logo.png");
                     faIcon.style.width = "22px";
                     faIcon.style.height = "22px";
+                    spanElement.appendChild(faIcon);
+                } else if (poi[i].type == "Info") {
+                    div.style.color="#ec9434";
+                    var faIcon = document.createElement("i");
+                    faIcon.className = "fas fa-bullseye fa-xs";
                     spanElement.appendChild(faIcon);
                 }
                 div.appendChild(spanElement);
@@ -1295,12 +1303,16 @@ var CarPicsSpinnerAPI = (function() {
                         modal.style.fontWeight="300";
                         modal.style.letterSpacing="0.4px";
                         // Set modal header color based on hotspot type
+                        // feature: "#0d82bf"; damage: "#CA1246"; info: "#ec9434"
                         if (poi.type == "Damage") {
                             document.getElementById(divId+poi.name+poi.x+poi.y).style.color = 'red';
-                            modal.style.background="#CA1246";   //feature: "#0d82bf"; damage: "#CA1246"
-                        } else {
+                            modal.style.background="#CA1246";
+                        } else if (poi.type == "Feature") {
                             document.getElementById(divId+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "../red_logo.png");
-                            modal.style.background="#0d82bf";   //feature: "#0d82bf"; damage: "#CA1246"
+                            modal.style.background="#0d82bf";
+                        } else if (poi.type == "Info") {
+                            document.getElementById(divId+poi.name+poi.x+poi.y).style.color = 'red';
+                            modal.style.background="#ec9434";
                         }
                         modal.style.color="#EAEAEA";  // set header text color to be almost-white
                         var modalText = document.createElement("span");
@@ -1319,8 +1331,10 @@ var CarPicsSpinnerAPI = (function() {
                         };
                         if (poi.type == "Damage") {
                             document.getElementById(divId+poi.name+poi.x+poi.y).style.color ="#fffb00";
-                        } else {
+                        } else if (poi.type == "Feature") {
                             document.getElementById(divId+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "../blue_logo.png");
+                        } else if (poi.type == "Info") {
+                            document.getElementById(divId+poi.name+poi.x+poi.y).style.color ="#ec9434";
                         }
                     }
                 })(this.HTMLElement, poi[i]);
@@ -1446,8 +1460,10 @@ var CarPicsSpinnerAPI = (function() {
                         // Set modal header color based on hotspot type
                         if (poi.type == "Damage") {
                             modalHead.style.background="#CA1246";   //feature: "#0d82bf"; damage: "#CA1246"
-                        } else {
+                        } else if (poi.type == "Feature") {
                             modalHead.style.background="#0d82bf";   //feature: "#0d82bf"; damage: "#CA1246"
+                        } else if (poi.type == "Info") {
+                            modalHead.style.background="#ec9434"; 
                         }
                         modalHead.style.color="#EAEAEA";  // set header text color to be almost-white
                         modalHead.style.borderRadius="5px 5px 0px 0px";
@@ -1587,8 +1603,10 @@ var CarPicsSpinnerAPI = (function() {
                             var modalOffset = document.getElementById(divId+"popModal").getBoundingClientRect();
                             if (poi.type == "Damage") {
                                 var lineColor="#CA1246";   //feature: "#0d82bf"; damage: "#CA1246"
-                            } else {
+                            } else if (poi.type == "Feature") {
                                 var lineColor="#0d82bf";   //feature: "#0d82bf"; damage: "#CA1246"
+                            } else if (poi.type == "Info") {
+                                var lineColor="#ec9434";
                             }
                             var lineHeight = "2px";
                             var lineStyle = "solid";
