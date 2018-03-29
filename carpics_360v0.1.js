@@ -766,16 +766,17 @@ var CarPicsSpinnerAPI = (function() {
                             modal.style.fontSize="0.7em";
                             modal.style.fontWeight="300";
                             modal.style.letterSpacing="0.4px";
+                            modal.style.color="#EAEAEA";  // set header text color to be almost-white
                             // Set modal header color based on hotspot type
-                            // feature: "#0d82bf"; damage: "#CA1246"; info : "#ec9434"
+                            // feature: "#0d82bf"; damage: "#fffb00"; info : "#ec9434"
                             if (hotspots[i].getAttribute("data-hotspot-type") == "Damage") {
-                                modal.style.background="#CA1246";
+                                modal.style.background="#fffb00";
+                                modal.style.color="#333";
                             } else if (hotspots[i].getAttribute("data-hotspot-type") == "Feature") {
                                 modal.style.background="#0d82bf";
                             } else if (hotspots[i].getAttribute("data-hotspot-type") == "Info") {
                                 modal.style.background="#ec9434";
                             }
-                            modal.style.color="#EAEAEA";  // set header text color to be almost-white
                             var modalText = document.createElement("span");
                             modalText.innerHTML=hotspots[i].getAttribute("data-hotspot-title");  // Display the name of hotspot on modal header
                             modalText.style.marginLeft="6px";
@@ -1302,11 +1303,13 @@ var CarPicsSpinnerAPI = (function() {
                         modal.style.fontSize="0.7em";
                         modal.style.fontWeight="300";
                         modal.style.letterSpacing="0.4px";
+                        modal.style.color="#EAEAEA";  // set header text color to be almost-white
                         // Set modal header color based on hotspot type
-                        // feature: "#0d82bf"; damage: "#CA1246"; info: "#ec9434"
+                        // feature: "#0d82bf"; damage: "#fffb00"; info: "#ec9434"
                         if (poi.type == "Damage") {
                             document.getElementById(divId+poi.name+poi.x+poi.y).style.color = 'red';
-                            modal.style.background="#CA1246";
+                            modal.style.background="#fffb00";
+                            modal.style.color="#333";
                         } else if (poi.type == "Feature") {
                             document.getElementById(divId+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "../red_logo.png");
                             modal.style.background="#0d82bf";
@@ -1314,7 +1317,6 @@ var CarPicsSpinnerAPI = (function() {
                             document.getElementById(divId+poi.name+poi.x+poi.y).style.color = 'red';
                             modal.style.background="#ec9434";
                         }
-                        modal.style.color="#EAEAEA";  // set header text color to be almost-white
                         var modalText = document.createElement("span");
                         modalText.innerHTML=poi.name;  // Display the name of hotspot on modal header
                         modalText.style.marginLeft="6px";
@@ -1386,6 +1388,11 @@ var CarPicsSpinnerAPI = (function() {
                                 listOfHotspots[j].style.display = "block";
                             }
                         };
+                        var titleModals = element.getElementsByClassName(""+divId+"hotspotsFullOpacityModal");
+                        for (var j=0; j<titleModals.length; j++) {
+                            // hide all
+                            titleModals[j].style.display = "none";
+                        };
                         // Create a overlay to display modal
                         var overlay = document.createElement("div");
                         overlay.style.fontFamily="'Helvetica Neue', Helvetica, Arial, sans-serif";
@@ -1423,6 +1430,9 @@ var CarPicsSpinnerAPI = (function() {
                         overlay.onmouseup = function(event) {
                             event.stopPropagation();  // prevent spin
                         }
+                        overlay.onmousemove = function(event) {
+                            event.stopPropagation();  // prevent drag
+                        }
                         // Create full detail modal
                         var modal = document.createElement("div");
                         modal.setAttribute("id", divId+"popModal");
@@ -1454,18 +1464,24 @@ var CarPicsSpinnerAPI = (function() {
                         modal.onmouseup = function(event) {
                             event.stopPropagation();  // prevent spin
                         }
+                        modal.onmousemove = function(event) {
+                            event.stopPropagation();  // prevent drag
+                        }
+
 
                         // Define modal header section
                         var modalHead = document.createElement("div");
+                        modalHead.style.color="#EAEAEA";  // set header text color to be almost-white
                         // Set modal header color based on hotspot type
                         if (poi.type == "Damage") {
-                            modalHead.style.background="#CA1246";   //feature: "#0d82bf"; damage: "#CA1246"
+                            modalHead.style.background="#fffb00";   //feature: "#0d82bf"; damage: "#CA1246"
+                            modalHead.style.color = "#333";
                         } else if (poi.type == "Feature") {
                             modalHead.style.background="#0d82bf";   //feature: "#0d82bf"; damage: "#CA1246"
                         } else if (poi.type == "Info") {
                             modalHead.style.background="#ec9434"; 
                         }
-                        modalHead.style.color="#EAEAEA";  // set header text color to be almost-white
+                        
                         modalHead.style.borderRadius="5px 5px 0px 0px";
                         modalHead.style.fontSize="1em";
                         modalHead.style.padding="5px 5px 5px 15px";
@@ -1494,6 +1510,11 @@ var CarPicsSpinnerAPI = (function() {
                             var listOfHotspots = element.getElementsByClassName("hotspot");
                             for (var j=0; j<listOfHotspots.length; j++) {
                                 listOfHotspots[j].style.display = "block";  // show all hotspots
+                            };
+                            var titleModals = element.getElementsByClassName(""+divId+"hotspotsFullOpacityModal");
+                            for (var j=0; j<titleModals.length; j++) {
+                                // hide all
+                                titleModals[j].style.display = "block";
                             };
                             // Zoom out image
                             element.style.maxHeight="100%";
@@ -1602,7 +1623,7 @@ var CarPicsSpinnerAPI = (function() {
                             overlay.appendChild(modal);
                             var modalOffset = document.getElementById(divId+"popModal").getBoundingClientRect();
                             if (poi.type == "Damage") {
-                                var lineColor="#CA1246";   //feature: "#0d82bf"; damage: "#CA1246"
+                                var lineColor="#fffb00";   //feature: "#0d82bf"; damage: "#CA1246"
                             } else if (poi.type == "Feature") {
                                 var lineColor="#0d82bf";   //feature: "#0d82bf"; damage: "#CA1246"
                             } else if (poi.type == "Info") {
