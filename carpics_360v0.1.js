@@ -1189,18 +1189,20 @@ var CarPicsSpinnerAPI = (function() {
                             modal.style.margin="auto";
                             modal.setAttribute("id", 'slideshow-'+"modalHover");
                             // Adjust the position of modal based on the position of hotspot in CarPicsSpinnerDiv
-                            if (e.clientX-position.left<position.width-modalWidth-125){
-                                modal.style.left=(e.clientX-position.left)+"px";
-                                modal.style.marginLeft="50px";
+                            var x = position.width * poi.x / 100 + 12;
+                            var y = position.height * poi.y / 100 + 12;
+                            if (x<position.width-modalWidth-125){
+                                modal.style.left=x+"px";
+                                modal.style.marginLeft="30px";
                             } else {
-                                modal.style.right=(position.width+position.left-e.clientX)+"px";
-                                modal.style.marginRight="50px";
+                                modal.style.right=(position.width-x)+"px";
+                                modal.style.marginRight="30px";
                             }
-                            if (e.clientY-position.top<position.height-modalHeight-25){
-                                modal.style.top=(e.clientY-position.top)+"px";
+                            if (y<position.height-modalHeight-25){
+                                modal.style.top=y+"px";
                                 modal.style.marginTop="10px";
                             } else {
-                                modal.style.bottom=(position.height+position.top-e.clientY)+"px";
+                                modal.style.bottom=(position.height-y)+"px";
                                 modal.style.marginBottom="10px";
                             }
                             modal.style.width=modalWidth+"px";
@@ -1328,7 +1330,6 @@ var CarPicsSpinnerAPI = (function() {
                             }
                         }
                     })(element, poi[i]);
-
                     element.appendChild(div);
                 }
                     
@@ -1441,6 +1442,16 @@ var CarPicsSpinnerAPI = (function() {
                     baseEvent.stopPropagation();
                     CarPicsGoogleAnalytics('send', 'pageview', {'dimension2':'Doubleclick'});
                     baseEvent.preventDefault();
+                    return;
+                }
+            })(this));
+
+            /*
+            * Prevent drag-to-spin on buttons
+            */
+            document.getElementById(this.divId+"buttonWrap").addEventListener("mousedown", (function(thisObj) {
+                return function(baseEvent) {
+                    baseEvent.stopPropagation();
                     return;
                 }
             })(this));
@@ -2233,13 +2244,10 @@ var CarPicsSpinnerAPI = (function() {
                                 var lineWidth = 
                                     Math.sqrt( (middleX-hotspotLineX)*(middleX-hotspotLineX) + (modalLineY-hotspotLineY)*(modalLineY-hotspotLineY) );
                                 line.style.position="absolute";
-                                // line.style.left=middleX+"px";
-                                // line.style.top=middleY+"px";
                                 line.style.right=(parentOffset.width-hotspotLineX)+"px";
                                 line.style.top=(hotspotLineY)+"px";
 
                                 line.style.width="0px";
-                                // line.style.width=lineWidth+"px";
                                 line.style.height="1px";
                                 line.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
                                 // get the rotation angle
@@ -2250,12 +2258,9 @@ var CarPicsSpinnerAPI = (function() {
                                 var horizontalLine = document.createElement("div");
                                 var horLineWidth = (hotspotLineX-modalLineX)*lineRatio;
                                 horizontalLine.style.position="absolute";
-                                // horizontalLine.style.left=modalLineX+"px";
-                                // horizontalLine.style.top=modalLineY+"px";
                                 horizontalLine.style.right=(parentOffset.width-middleX)+"px";
                                 horizontalLine.style.top=middleY+"px";
                                 horizontalLine.style.width="0px";
-                                // horizontalLine.style.width=horLineWidth+"px";
                                 horizontalLine.style.height="1px";
                                 horizontalLine.style.borderTop=lineStyle + " " + lineHeight + " " + lineColor;
                                 overlay.appendChild(horizontalLine);
