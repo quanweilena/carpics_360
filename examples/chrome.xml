@@ -1,0 +1,2214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VehicleDescription country="CA" language="en" modelYear="2019" bestMakeName="Jeep" bestModelName="Cherokee" bestStyleName="North 4x4" bestTrimName="North" xmlns="urn:description7b.services.chrome.com">
+    <responseStatus responseCode="Successful" description="Successful"/>
+    <vinDescription vin="1C4PJMCX4KD142021" modelYear="2019" division="Jeep" modelName="Cherokee" styleName="North 4x4" bodyType="Wagon 4 Dr." drivingWheels="AWD" builddata="no">
+        <WorldManufacturerIdentifier>United States Reserved </WorldManufacturerIdentifier>
+        <marketClass id="18">4WD Sport Utility Vehicles</marketClass>
+    </vinDescription>
+    <style id="397879" modelYear="2019" name="North 4x4" nameWoTrim="4x4" trim="North" mfrModelCode="KLJM74" fleetOnly="false" modelFleet="false" passDoors="4" altBodyType="Sport Utility" drivetrain="Four Wheel Drive">
+        <division id="21">Jeep</division>
+        <subdivision id="9063">Jeep Utility Vehicles</subdivision>
+        <model id="31102">Cherokee</model>
+        <basePrice unknown="false" msrp="35995.0" destination="1895.0"/>
+        <bodyType primary="true" id="13">Sport Utility</bodyType>
+        <marketClass id="18">4WD Sport Utility Vehicles</marketClass>
+        <stockImage filename="28162.jpg" url="http://media.chromedata.com/autoBuilderData/stockPhotos/28162.jpg" width="400" height="200"/>
+        <acode>CAC90JES042B0</acode>
+    </style>
+    <engine highOutput="false">
+        <engineType id="1051">V6 Cylinder Engine</engineType>
+        <fuelType id="1059">Gasoline Fuel</fuelType>
+        <horsepower value="271.0" rpm="6500"/>
+        <netTorque value="239.0" rpm="4400"/>
+        <cylinders>6</cylinders>
+        <displacement>
+            <value unit="liters">3.2</value>
+        </displacement>
+        <fuelEconomy unit="L/100 km">
+            <city low="11.2" high="12.8"/>
+            <hwy low="8.0" high="9.0"/>
+        </fuelEconomy>
+        <fuelCapacity unit="L" low="59.8" high="59.8"/>
+        <installed cause="OptionCodeBuild"/>
+    </engine>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>3.734 Axle Ratio</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Normal Duty Suspension</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>GVWR: 2,494 kgs (5,500 lbs)</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Transmission w/Driver Selectable Mode and Oil Cooler</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Electronic Transfer Case</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Automatic Full-Time Four-Wheel Drive</description>
+        <category id="1040"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Auxiliary Transmission Oil Cooler</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Block Heater</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>700CCA Maintenance-Free Battery w/Run Down Protection</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>160 Amp Alternator</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Engine Stop-Start System</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Towing w/Trailer Sway Control</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>1000# Maximum Payload</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Gas-Pressurized Shock Absorbers</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Electric Power-Assist Speed-Sensing Steering</description>
+        <category id="1084"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>59.8 L Fuel Tank</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Single Stainless Steel Exhaust</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Permanent Locking Hubs</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Front Suspension w/Coil Springs</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Rear Suspension w/Coil Springs</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>4-Wheel Disc Brakes w/4-Wheel ABS, Front Vented Discs, Brake Assist, Hill Hold Control and Electric Parking Brake</description>
+        <category id="1018"/>
+        <category id="1020"/>
+        <category id="1228"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1236">MECHANICAL</header>
+        <description>Upfitter Switches</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Wheels: 17" x 7" Aluminum</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Tires: 225/65R17 BSW AS</description>
+        <category id="1088"/>
+        <category id="1093"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Aluminum Wheels w/Silver Accents</description>
+        <category id="1123"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Steel Spare Wheel</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Compact Spare Tire Mounted Inside Under Cargo</description>
+        <category id="1098"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Body-Coloured Front Bumper w/Black Rub Strip/Fascia Accent</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Black Rear Bumper</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Black Bodyside Cladding and Black Fender Flares</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Chrome Side Windows Trim</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Body-Coloured Door Handles</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Fixed Rear Window w/Fixed Interval Wiper and Defroster</description>
+        <category id="1034"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Variable Intermittent Wipers</description>
+        <category id="1127"/>
+        <category id="1159"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Deep Tinted Glass</description>
+        <category id="1158"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Galvanized Steel/Aluminum/Composite Panels</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Lip Spoiler</description>
+        <category id="1194"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Black Grille w/Chrome Surround</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Front License Plate Bracket</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Liftgate Rear Cargo Access</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Roof Rack Rails Only</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Front Fog Lamps</description>
+        <category id="1151"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Perimeter/Approach Lights</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>LED Brakelights</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1176">EXTERIOR</header>
+        <description>Fully Automatic Projector Beam Led Low/High Beam Daytime Running Headlamps w/Delay-Off</description>
+        <category id="1061"/>
+        <category id="1169"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="10689">ENTERTAINMENT</header>
+        <description>Radio w/Seek-Scan, Clock, Speed Compensated Volume Control, Aux Audio Input Jack, Steering Wheel Controls, Voice Activation, Radio Data System and Uconnect External Memory Control</description>
+        <category id="1150"/>
+        <category id="1161"/>
+        <category id="1230"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="10689">ENTERTAINMENT</header>
+        <description>6 Speakers</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="10689">ENTERTAINMENT</header>
+        <description>Integrated Roof Antenna</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="10689">ENTERTAINMENT</header>
+        <description>GPS Antenna Input</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="10689">ENTERTAINMENT</header>
+        <description>Hands-Free Comm w/Bluetooth</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="10689">ENTERTAINMENT</header>
+        <description>Wireless Phone Connectivity</description>
+        <category id="1211"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>6-Way Passenger Seat -inc: Manual Recline, Height Adjustment and Fore/Aft Movement</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>60-40 Folding Split-Bench Front Facing Manual Reclining Fold Forward Seatback Cloth/Vinyl Rear Seat</description>
+        <category id="1076"/>
+        <category id="1304"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Manual Tilt/Telescoping Steering Column</description>
+        <category id="1087"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Leather/Metal-Look Steering Wheel</description>
+        <category id="1192"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Illuminated Front Cupholder</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Rear Cupholder</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Compass</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Valet Function</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Cruise Control w/Steering Wheel Controls</description>
+        <category id="1033"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>HVAC -inc: Underseat Ducts and Console Ducts</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Illuminated Locking Glove Box</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Driver Foot Rest</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Interior Trim -inc: Metal-Look Instrument Panel Insert, Simulated Wood Door Panel Insert, Metal-Look Console Insert and Chrome/Metal-Look Interior Accents</description>
+        <category id="1170"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Full Cloth Headliner</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Vinyl Door Trim Insert</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Urethane Gear Shift Knob</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Day-Night Rearview Mirror</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Driver And Passenger Visor Vanity Mirrors w/Driver And Passenger Illumination</description>
+        <category id="1175"/>
+        <category id="1176"/>
+        <category id="1177"/>
+        <category id="1178"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Full Floor Console w/Covered Storage, Mini Overhead Console w/Storage and 3 12V DC Power Outlets</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Front And Rear Map Lights</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Fade-To-Off Interior Lighting</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Carpet Floor Trim</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Cargo Area Concealed Storage</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Cargo Space Lights</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>7" Touchscreen</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>USB Mobile Projection</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Covered Dashboard Storage, Driver And Passenger Door Bins</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Delayed Accessory Power</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Systems Monitor</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Redundant Digital Speedometer</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Outside Temp Gauge</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Digital/Analog Display</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Manual Anti-Whiplash Adjustable Front Head Restraints and Manual Adjustable Rear Head Restraints</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Front Centre Armrest and Rear Centre Armrest</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>1 Seatback Storage Pocket</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Sentry Key Engine Immobilizer</description>
+        <category id="1166"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>3 12V DC Power Outlets</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1220">INTERIOR</header>
+        <description>Air Filtration</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1343">SAFETY</header>
+        <description>Side Impact Beams</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1343">SAFETY</header>
+        <description>Tire Specific Low Tire Pressure Warning</description>
+        <category id="1202"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1343">SAFETY</header>
+        <description>Dual Stage Driver And Passenger Front Airbags</description>
+        <category id="1001"/>
+        <category id="1002"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1343">SAFETY</header>
+        <description>Curtain 1st And 2nd Row Airbags</description>
+        <category id="1007"/>
+        <category id="1008"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1343">SAFETY</header>
+        <description>Airbag Occupancy Sensor</description>
+        <category id="1310"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1343">SAFETY</header>
+        <description>Rear Child Safety Locks</description>
+        <category id="1039"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1343">SAFETY</header>
+        <description>Outboard Front Lap And Shoulder Safety Belts -inc: Rear Centre 3 Point, Height Adjusters and Pretensioners</description>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <standard>
+        <header id="1343">SAFETY</header>
+        <description>ParkView Back-Up Camera</description>
+        <category id="1224"/>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </standard>
+    <factoryOption chromeCode="EHK" oemCode="EHK" standard="false" optionKindId="6" utf="B" fleetOnly="false">
+        <header id="1160">ENGINE</header>
+        <description>ENGINE: 3.2L PENTASTAR VVT V6 W/ESS</description>
+        <description>-inc: Engine Oil Cooler, Bright Dual Exhaust Tips</description>
+        <category id="1051"/>
+        <category id="1053" removed="true"/>
+        <category id="1054" removed="true"/>
+        <category id="1059"/>
+        <category id="1315" removed="true"/>
+        <price unknown="false" msrpMin="1595.0" msrpMax="1595.0"/>
+        <styleId>397879</styleId>
+        <installed cause="Engine"/>
+    </factoryOption>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="38">Air Bag - Frontal</header>
+            <category id="1001">Driver Air Bag</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="38">Air Bag - Frontal</header>
+            <category id="1002">Passenger Air Bag</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="39">Air Bag - Side</header>
+            <category id="1005">Front Side Air Bag</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="39">Air Bag - Side</header>
+            <category id="1006">Rear Side Air Bag</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="39">Air Bag - Side</header>
+            <category id="1007">Front Head Air Bag</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="39">Air Bag - Side</header>
+            <category id="1008">Rear Head Air Bag</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="21">Air Conditioning</header>
+            <category id="1011">A/C</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="22">Audio</header>
+            <category id="1014">AM/FM Stereo</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="4">Chassis</group>
+            <header id="4">Brakes</header>
+            <category id="1018">ABS</category>
+            <type id="1">ABS-Brakes</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="4">Chassis</group>
+            <header id="4">Brakes</header>
+            <category id="1020">4-Wheel Disc Brakes</category>
+            <type id="2">Brakes</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="23">Convenience</header>
+            <category id="1033">Cruise Control</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="29">Window</header>
+            <category id="1034">Rear Defrost</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="42">Safety Features</header>
+            <category id="1039">Child Safety Locks</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="6">Powertrain</group>
+            <header id="37">Drivetrain</header>
+            <category id="1040">Four Wheel Drive</category>
+            <type id="3">Drivetrain</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="6">Powertrain</group>
+            <header id="13">Engine</header>
+            <category id="1051">V6 Cylinder Engine</category>
+            <type id="4">Engine</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="Engine"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="25">Floor Mats</header>
+            <category id="1055">Floor Mats</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="6">Powertrain</group>
+            <header id="46">Fuel</header>
+            <category id="1059">Gasoline Fuel</category>
+            <type id="6">Fuel system</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="Engine"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="42">Safety Features</header>
+            <category id="1061">Daytime Running Lights</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="26">Locks</header>
+            <category id="1062">Keyless Entry</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="26">Locks</header>
+            <category id="1063">Power Door Locks</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="27">Mirrors</header>
+            <category id="1064">Heated Mirrors</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="27">Mirrors</header>
+            <category id="1065">Power Mirror(s)</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="10">Seating</group>
+            <header id="44">Seats</header>
+            <category id="1074">Power Driver Seat</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="10">Seating</group>
+            <header id="44">Seats</header>
+            <category id="1076">Pass-Through Rear Seat</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="10">Seating</group>
+            <header id="44">Seats</header>
+            <category id="1082">Bucket Seats</category>
+            <type id="9">Seats - Front</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="4">Chassis</group>
+            <header id="6">Steering</header>
+            <category id="1084">Power Steering</category>
+            <type id="10">Steering</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="23">Convenience</header>
+            <category id="1087">Adjustable Steering Wheel</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="2">Exterior</group>
+            <header id="34">Tire - Front</header>
+            <category id="1088">Tires - Front All-Season</category>
+            <type id="12">Tire-Front</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="2">Exterior</group>
+            <header id="35">Tire - Rear</header>
+            <category id="1093">Tires - Rear All-Season</category>
+            <type id="13">Tire-Rear</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="2">Exterior</group>
+            <header id="36">Tire - Spare</header>
+            <category id="1098">Temporary Spare Tire</category>
+            <type id="14">Tire-Spare</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="42">Safety Features</header>
+            <category id="1100">Traction Control</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="4">Chassis</group>
+            <header id="10">Wheels</header>
+            <category id="1123">Aluminum Wheels</category>
+            <type id="17">Wheels</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="29">Window</header>
+            <category id="1126">Power Windows</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="23">Convenience</header>
+            <category id="1127">Intermittent Wipers</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <category id="1130">A/T</category>
+            <type id="16">Transmission - Type</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="22">Audio</header>
+            <category id="1149">Satellite Radio</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="22">Audio</header>
+            <category id="1150">MP3 Player</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="23">Convenience</header>
+            <category id="1151">Fog Lamps</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="29">Window</header>
+            <category id="1158">Privacy Glass</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="23">Convenience</header>
+            <category id="1159">Variable Speed Intermittent Wipers</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="23">Convenience</header>
+            <category id="1161">Steering Wheel Audio Controls</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="23">Convenience</header>
+            <category id="1166">Engine Immobilizer</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="23">Convenience</header>
+            <category id="1169">Automatic Headlights</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="24">Décor</header>
+            <category id="1170">Woodgrain Interior Trim</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="27">Mirrors</header>
+            <category id="1175">Driver Vanity Mirror</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="27">Mirrors</header>
+            <category id="1176">Passenger Vanity Mirror</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="27">Mirrors</header>
+            <category id="1177">Driver Illuminated Vanity Mirror</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="27">Mirrors</header>
+            <category id="1178">Passenger Illuminated Visor Mirror</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="10">Seating</group>
+            <header id="44">Seats</header>
+            <category id="1189">Driver Adjustable Lumbar</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="23">Convenience</header>
+            <category id="1192">Leather Steering Wheel</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="0">Vehicle</group>
+            <header id="0">Vehicle</header>
+            <category id="1194">Rear Spoiler</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <category id="1195">Transmission w/Dual Shift Mode</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="4">Chassis</group>
+            <header id="7">Tires</header>
+            <category id="1202">Tire Pressure Monitor</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="23">Convenience</header>
+            <category id="1203">Trip Computer</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="28">Telephone</header>
+            <category id="1211">Bluetooth Connection</category>
+            <type id="11">Telephone</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="23">Convenience</header>
+            <category id="1224">Back-Up Camera</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="42">Safety Features</header>
+            <category id="1227">Stability Control</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="42">Safety Features</header>
+            <category id="1228">Brake Assist</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="22">Audio</header>
+            <category id="1230">Auxiliary Audio Input</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="10">Seating</group>
+            <header id="44">Seats</header>
+            <category id="1304">Rear Bench Seat</category>
+            <type id="81">Seats - Rear</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="38">Air Bag - Frontal</header>
+            <category id="1310">Passenger Air Bag Sensor</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="9">Safety</group>
+            <header id="38">Air Bag - Frontal</header>
+            <category id="1317">Knee Air Bag</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <category id="1327">9-Speed A/T</category>
+            <type id="15">Transmission</type>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <genericEquipment>
+        <definition>
+            <group id="8">Accessories</group>
+            <header id="22">Audio</header>
+            <category id="1348">Smart Device Integration</category>
+        </definition>
+        <styleId>397879</styleId>
+        <installed cause="BaseEquipment"/>
+    </genericEquipment>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="7">Summary</group>
+            <header id="16">Summary</header>
+            <title id="1">Vehicle Name</title>
+        </definition>
+        <value value="Jeep Cherokee" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="7">Summary</group>
+            <header id="16">Summary</header>
+            <title id="2">Body Style</title>
+        </definition>
+        <value value="Sport Utility" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="6">Drivetrain</title>
+        </definition>
+        <value value="Four Wheel Drive" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="0">Vehicle</group>
+            <header id="0">Vehicle</header>
+            <title id="7">EPA Classification</title>
+        </definition>
+        <value value="Small Sport Utility Vehicles 4WD" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="5">Dimensions</group>
+            <header id="1">Interior Dimensions</header>
+            <title id="8">Passenger Capacity</title>
+        </definition>
+        <range min="5.0" max="5.0"/>
+        <value value="5" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="ft³">
+            <group id="5">Dimensions</group>
+            <header id="1">Interior Dimensions</header>
+            <title id="9">Passenger Volume</title>
+        </definition>
+        <range min="128.0" max="128.0"/>
+        <value value="128" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="lbs">
+            <group id="4">Chassis</group>
+            <header id="9">Weight Information</header>
+            <title id="10">Base Curb Weight</title>
+        </definition>
+        <range min="3953.0" max="4046.0"/>
+        <value value="4046" condition="EHK">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="L/100 km">
+            <group id="6">Powertrain</group>
+            <header id="14">Mileage</header>
+            <title id="26">EnerGuide Estimate - City</title>
+        </definition>
+        <range min="11.2" max="12.8"/>
+        <value value="12.2" condition="EHK&amp;DFH">
+            <styleId>397879</styleId>
+        </value>
+        <value value="12.8" condition="EHK&amp;DFJ">
+            <styleId>397879</styleId>
+        </value>
+        <value value="11.2" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="L/100 km">
+            <group id="6">Powertrain</group>
+            <header id="14">Mileage</header>
+            <title id="27">EnerGuide Estimate - Hwy</title>
+        </definition>
+        <range min="8.0" max="9.0"/>
+        <value value="8.6" condition="(EHK&amp;DFH),(EC1&amp;DFJ)">
+            <styleId>397879</styleId>
+        </value>
+        <value value="9" condition="EHK&amp;DFJ">
+            <styleId>397879</styleId>
+        </value>
+        <value value="8" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="lbs">
+            <group id="4">Chassis</group>
+            <header id="8">Trailering</header>
+            <title id="31">Dead Weight Hitch - Max Trailer Wt.</title>
+        </definition>
+        <range min="2000.0" max="4500.0"/>
+        <value value="4500" condition="AHT">
+            <styleId>397879</styleId>
+        </value>
+        <value value="2000" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="lbs">
+            <group id="4">Chassis</group>
+            <header id="8">Trailering</header>
+            <title id="32">Dead Weight Hitch - Max Tongue Wt.</title>
+        </definition>
+        <range min="200.0" max="450.0"/>
+        <value value="450" condition="AHT">
+            <styleId>397879</styleId>
+        </value>
+        <value value="200" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="lbs">
+            <group id="4">Chassis</group>
+            <header id="8">Trailering</header>
+            <title id="33">Wt Distributing Hitch - Max Trailer Wt.</title>
+        </definition>
+        <range min="2000.0" max="4500.0"/>
+        <value value="4500" condition="AHT">
+            <styleId>397879</styleId>
+        </value>
+        <value value="2000" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="lbs">
+            <group id="4">Chassis</group>
+            <header id="8">Trailering</header>
+            <title id="34">Wt Distributing Hitch - Max Tongue Wt.</title>
+        </definition>
+        <range min="200.0" max="450.0"/>
+        <value value="450" condition="AHT">
+            <styleId>397879</styleId>
+        </value>
+        <value value="200" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="lbs">
+            <group id="4">Chassis</group>
+            <header id="8">Trailering</header>
+            <title id="37">Maximum Trailering Capacity</title>
+        </definition>
+        <range min="2000.0" max="4500.0"/>
+        <value value="4500" condition="AHT">
+            <styleId>397879</styleId>
+        </value>
+        <value value="2000" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="13">Engine</header>
+            <title id="40">Engine Order Code</title>
+        </definition>
+        <value value="EHK" condition="EHK">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="13">Engine</header>
+            <title id="41">Engine Type</title>
+        </definition>
+        <value value="Regular Unleaded V-6" condition="EHK">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="13">Engine</header>
+            <title id="42">Displacement</title>
+        </definition>
+        <value value="3.2 L/198" condition="EHK">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="13">Engine</header>
+            <title id="43">Fuel System</title>
+        </definition>
+        <value value="Sequential MPI" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="13">Engine</header>
+            <title id="48">SAE Net Horsepower @ RPM</title>
+        </definition>
+        <value value="271 @ 6500" condition="EHK">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="13">Engine</header>
+            <title id="49">SAE Net Torque @ RPM</title>
+        </definition>
+        <value value="239 @ 4400" condition="EHK">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="51">Trans Order Code</title>
+        </definition>
+        <value value="DFJ" condition="DFJ">
+            <styleId>397879</styleId>
+        </value>
+        <value value="DFH" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="52">Trans Type</title>
+        </definition>
+        <range min="9.0" max="9.0"/>
+        <value value="9" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="53">Trans Description Cont.</title>
+        </definition>
+        <value value="Automatic w/OD" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="54">Trans Description Cont. Again</title>
+        </definition>
+        <value value="" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="56">First Gear Ratio (:1)</title>
+        </definition>
+        <range min="4.7" max="4.7"/>
+        <value value="4.70" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="57">Second Gear Ratio (:1)</title>
+        </definition>
+        <range min="2.84" max="2.84"/>
+        <value value="2.84" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="58">Third Gear Ratio (:1)</title>
+        </definition>
+        <range min="1.91" max="1.91"/>
+        <value value="1.91" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="59">Fourth Gear Ratio (:1)</title>
+        </definition>
+        <range min="1.38" max="1.38"/>
+        <value value="1.38" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="60">Fifth Gear Ratio (:1)</title>
+        </definition>
+        <range min="1.0" max="1.0"/>
+        <value value="1.00" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="61">Sixth Gear Ratio (:1)</title>
+        </definition>
+        <range min="0.81" max="0.81"/>
+        <value value="0.81" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="62">Reverse Ratio (:1)</title>
+        </definition>
+        <range min="3.81" max="3.81"/>
+        <value value="3.81" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="69">Final Drive Axle Ratio (:1)</title>
+        </definition>
+        <range min="3.52" max="3.73"/>
+        <value value="3.52" condition="DMD">
+            <styleId>397879</styleId>
+        </value>
+        <value value="3.73" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="12">Electrical</header>
+            <title id="76">Cold Cranking Amps @ 0° F (Primary)</title>
+        </definition>
+        <range min="700.0" max="700.0"/>
+        <value value="700" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="12">Electrical</header>
+            <title id="84">Maximum Alternator Capacity (amps)</title>
+        </definition>
+        <range min="160.0" max="180.0"/>
+        <value value="160" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="17">Suspension</header>
+            <title id="105">Suspension Type - Front</title>
+        </definition>
+        <value value="Strut" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="17">Suspension</header>
+            <title id="106">Suspension Type - Rear</title>
+        </definition>
+        <value value="Multi-Link" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="17">Suspension</header>
+            <title id="107">Suspension Type - Front (Cont.)</title>
+        </definition>
+        <value value="Strut" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="17">Suspension</header>
+            <title id="108">Suspension Type - Rear (Cont.)</title>
+        </definition>
+        <value value="Multi-Link" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="7">Tires</header>
+            <title id="137">Front Tire Order Code</title>
+        </definition>
+        <value value="TRF" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="7">Tires</header>
+            <title id="138">Rear Tire Order Code</title>
+        </definition>
+        <value value="TRF" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="7">Tires</header>
+            <title id="139">Spare Tire Order Code</title>
+        </definition>
+        <value value="TBB" condition="AHT">
+            <styleId>397879</styleId>
+        </value>
+        <value value="" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="7">Tires</header>
+            <title id="140">Front Tire Size</title>
+        </definition>
+        <value value="P225/65TR17" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="7">Tires</header>
+            <title id="141">Rear Tire Size</title>
+        </definition>
+        <value value="P225/65TR17" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="7">Tires</header>
+            <title id="142">Spare Tire Size</title>
+        </definition>
+        <value value="Full-Size" condition="AHT">
+            <styleId>397879</styleId>
+        </value>
+        <value value="Compact" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="4">Chassis</group>
+            <header id="10">Wheels</header>
+            <title id="156">Front Wheel Size</title>
+        </definition>
+        <value value="17 X 7" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="4">Chassis</group>
+            <header id="10">Wheels</header>
+            <title id="157">Rear Wheel Size</title>
+        </definition>
+        <value value="17 X 7" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="4">Chassis</group>
+            <header id="10">Wheels</header>
+            <title id="158">Spare Wheel Size</title>
+        </definition>
+        <value value="Full-Size" condition="AHT">
+            <styleId>397879</styleId>
+        </value>
+        <value value="Compact" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="10">Wheels</header>
+            <title id="165">Front Wheel Material</title>
+        </definition>
+        <value value="Aluminum" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="10">Wheels</header>
+            <title id="166">Rear Wheel Material</title>
+        </definition>
+        <value value="Aluminum" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="10">Wheels</header>
+            <title id="167">Spare Wheel Material</title>
+        </definition>
+        <value value="Steel" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="6">Steering</header>
+            <title id="176">Steering Type</title>
+        </definition>
+        <value value="Rack-Pinion" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="ft">
+            <group id="4">Chassis</group>
+            <header id="6">Steering</header>
+            <title id="184">Turning Diameter - Curb to Curb</title>
+        </definition>
+        <range min="37.7" max="38.0"/>
+        <value value="38" condition="DFJ">
+            <styleId>397879</styleId>
+        </value>
+        <value value="37.7" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="4">Brakes</header>
+            <title id="187">Brake ABS System</title>
+        </definition>
+        <value value="4-Wheel" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="4">Brakes</header>
+            <title id="190">Disc - Front (Yes or   )</title>
+        </definition>
+        <value value="Yes" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="4">Brakes</header>
+            <title id="191">Disc - Rear (Yes or   )</title>
+        </definition>
+        <value value="Yes" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="4">Chassis</group>
+            <header id="4">Brakes</header>
+            <title id="192">Front Brake Rotor Diam x Thickness</title>
+        </definition>
+        <range min="13.0" max="13.0"/>
+        <value value="13" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="4">Chassis</group>
+            <header id="4">Brakes</header>
+            <title id="193">Rear Brake Rotor Diam x Thickness</title>
+        </definition>
+        <range min="12.6" max="12.6"/>
+        <value value="12.6" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="4">Chassis</group>
+            <header id="4">Brakes</header>
+            <title id="196">Drum - Rear (Yes or   )</title>
+        </definition>
+        <value value="" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="4">Chassis</group>
+            <header id="4">Brakes</header>
+            <title id="197">Rear Drum Diam x Width</title>
+        </definition>
+        <value value="" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="L">
+            <group id="4">Chassis</group>
+            <header id="5">Fuel Tank</header>
+            <title id="206">Fuel Tank Capacity, Approx</title>
+        </definition>
+        <range min="59.8" max="59.8"/>
+        <value value="59.8" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="1">Interior Dimensions</header>
+            <title id="256">Front Head Room</title>
+        </definition>
+        <range min="37.9" max="39.4"/>
+        <value value="37.9" condition="GWJ">
+            <styleId>397879</styleId>
+        </value>
+        <value value="39.4" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="1">Interior Dimensions</header>
+            <title id="257">Front Leg Room</title>
+        </definition>
+        <range min="41.1" max="41.1"/>
+        <value value="41.1" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="1">Interior Dimensions</header>
+            <title id="258">Front Shoulder Room</title>
+        </definition>
+        <range min="57.6" max="57.6"/>
+        <value value="57.6" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="1">Interior Dimensions</header>
+            <title id="259">Front Hip Room</title>
+        </definition>
+        <range min="53.8" max="53.8"/>
+        <value value="53.8" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="1">Interior Dimensions</header>
+            <title id="261">Second Head Room</title>
+        </definition>
+        <range min="38.5" max="38.5"/>
+        <value value="38.5" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="1">Interior Dimensions</header>
+            <title id="262">Second Leg Room</title>
+        </definition>
+        <range min="40.3" max="40.3"/>
+        <value value="40.3" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="1">Interior Dimensions</header>
+            <title id="263">Second Shoulder Room</title>
+        </definition>
+        <range min="55.1" max="55.1"/>
+        <value value="55.1" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="1">Interior Dimensions</header>
+            <title id="264">Second Hip Room</title>
+        </definition>
+        <range min="49.9" max="49.9"/>
+        <value value="49.9" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="2">Exterior Dimensions</header>
+            <title id="301">Wheelbase</title>
+        </definition>
+        <range min="106.6" max="106.6"/>
+        <value value="106.6" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="2">Exterior Dimensions</header>
+            <title id="304">Length, Overall</title>
+        </definition>
+        <range min="182.0" max="182.0"/>
+        <value value="182" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="2">Exterior Dimensions</header>
+            <title id="305">Width, Max w/o mirrors</title>
+        </definition>
+        <range min="73.2" max="73.2"/>
+        <value value="73.2" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="2">Exterior Dimensions</header>
+            <title id="306">Height, Overall</title>
+        </definition>
+        <range min="66.2" max="67.3"/>
+        <value value="67.3" condition="DFJ">
+            <styleId>397879</styleId>
+        </value>
+        <value value="66.2" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="2">Exterior Dimensions</header>
+            <title id="309">Track Width, Front</title>
+        </definition>
+        <range min="62.7" max="62.7"/>
+        <value value="62.7" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="2">Exterior Dimensions</header>
+            <title id="310">Track Width, Rear</title>
+        </definition>
+        <range min="62.7" max="63.1"/>
+        <value value="62.7" condition="DFJ">
+            <styleId>397879</styleId>
+        </value>
+        <value value="63.1" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="3">Cargo Area Dimensions</header>
+            <title id="362">Cargo Area Width @ Beltline</title>
+        </definition>
+        <range min="41.4" max="41.4"/>
+        <value value="41.4" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="3">Cargo Area Dimensions</header>
+            <title id="364">Cargo Box Width @ Wheelhousings</title>
+        </definition>
+        <range min="36.1" max="36.1"/>
+        <value value="36.1" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="3">Cargo Area Dimensions</header>
+            <title id="366">Cargo Box (Area) Height</title>
+        </definition>
+        <range min="30.7" max="30.7"/>
+        <value value="30.7" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="in">
+            <group id="5">Dimensions</group>
+            <header id="2">Exterior Dimensions</header>
+            <title id="369">Liftover Height</title>
+        </definition>
+        <range min="30.9" max="30.9"/>
+        <value value="30.9" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="ft³">
+            <group id="5">Dimensions</group>
+            <header id="3">Cargo Area Dimensions</header>
+            <title id="372">Cargo Volume to Seat 1</title>
+        </definition>
+        <range min="54.9" max="54.9"/>
+        <value value="54.9" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="ft³">
+            <group id="5">Dimensions</group>
+            <header id="3">Cargo Area Dimensions</header>
+            <title id="373">Cargo Volume to Seat 2</title>
+        </definition>
+        <range min="25.8" max="25.8"/>
+        <value value="25.8" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="ft³">
+            <group id="5">Dimensions</group>
+            <header id="3">Cargo Area Dimensions</header>
+            <title id="374">Cargo Volume to Seat 3</title>
+        </definition>
+        <range min="25.8" max="25.8"/>
+        <value value="25.8" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="401">Seventh Gear Ratio (:1)</title>
+        </definition>
+        <range min="0.7" max="0.7"/>
+        <value value="0.70" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="6">Powertrain</group>
+            <header id="15">Transmission</header>
+            <title id="402">Eighth Gear Ratio (:1)</title>
+        </definition>
+        <range min="0.58" max="0.58"/>
+        <value value="0.58" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <technicalSpecification>
+        <definition measurementUnit="N/A">
+            <group id="0">Vehicle</group>
+            <header id="48">Emissions</header>
+            <title id="804">G/km Of CO2 Emissions</title>
+        </definition>
+        <range min="229.0" max="259.0"/>
+        <value value="249" condition="EHK&amp;DFH">
+            <styleId>397879</styleId>
+        </value>
+        <value value="259" condition="EHK&amp;DFJ">
+            <styleId>397879</styleId>
+        </value>
+        <value value="230" condition="">
+            <styleId>397879</styleId>
+        </value>
+    </technicalSpecification>
+    <basePrice unknown="false">
+        <invoice/>
+        <msrp low="35995.0" high="35995.0"/>
+        <destination low="1895.0" high="1895.0"/>
+    </basePrice>
+</VehicleDescription>
