@@ -140,12 +140,12 @@ var CarPicsSpinnerAPI = (function() {
         hotspotModal:{
             fontFamily:"'Helvetica Neue', Helvetica, Arial, sans-serif",
             position:"absolute",
-            margin:"0 0 0 5%",
+            margin:"0 0 0 7.5%",  //based on hotspot size
             height:"24px",
             width:"auto",
             borderRadius:"5px",
             zIndex:"32",
-            opacity:"0.85",
+            opacity:"0.7",
             overflowX:"hidden",
             overflowY:"scroll",
             boxShadow:"2px 2px 4px 0px rgba(82, 82, 82, 0.75)",
@@ -422,18 +422,18 @@ var CarPicsSpinnerAPI = (function() {
         }
         var img = document.createElement("img");
         setPseudoCSSClass(img, "openButtonSet");
-        img.setAttribute("src", "../seat.png");
+        img.setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/seat.png");
         document.getElementById(this.divId+"panoButton").appendChild(img);
         if (this.displayDoorOpen === true) {
             var img = document.createElement("img");
             setPseudoCSSClass(img, "openButtonSet");
-            img.setAttribute("src", "../carOpenBlack.png");
+            img.setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/carOpenBlack.png");
             document.getElementById(this.divId+"door_open_button").appendChild(img);
             document.getElementById(this.divId+"door_open_button").setAttribute("title", "Close car doors");
         } else { 
             var img = document.createElement("img");
             setPseudoCSSClass(img, "openButtonSet");
-            img.setAttribute("src", "../carCloseBlack.png");
+            img.setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/carCloseBlack.png");
             document.getElementById(this.divId+"door_open_button").appendChild(img);
             document.getElementById(this.divId+"door_open_button").setAttribute("title", "Open car doors");
         }
@@ -860,9 +860,9 @@ var CarPicsSpinnerAPI = (function() {
                     document.getElementById(thisObj.divId+"door_open_button").style.background="#888";
                     var button = document.getElementById(thisObj.divId+"door_open_button");
                     if (thisObj.displayDoorOpen) {
-                        button.getElementsByTagName("img")[0].setAttribute("src", "../carOpenWhite.png");
+                        button.getElementsByTagName("img")[0].setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/carOpenWhite.png");
                     } else {
-                        button.getElementsByTagName("img")[0].setAttribute("src", "../carCloseWhite.png");
+                        button.getElementsByTagName("img")[0].setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/carCloseWhite.png");
                     }
                 }
             })(this));
@@ -871,9 +871,9 @@ var CarPicsSpinnerAPI = (function() {
                     document.getElementById(thisObj.divId+"door_open_button").style.background="#fff";
                     var button = document.getElementById(thisObj.divId+"door_open_button");
                     if (thisObj.displayDoorOpen) {
-                        button.getElementsByTagName("img")[0].setAttribute("src", "../carOpenBlack.png");
+                        button.getElementsByTagName("img")[0].setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/carOpenBlack.png");
                     } else {
-                        button.getElementsByTagName("img")[0].setAttribute("src", "../carCloseBlack.png");
+                        button.getElementsByTagName("img")[0].setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/carCloseBlack.png");
                     }
                 }
             })(this));
@@ -910,8 +910,9 @@ var CarPicsSpinnerAPI = (function() {
                             } else if (hotspots[i].getAttribute("data-hotspot-type") == "Feature") {
                                 modal.style.background="#0d82bf";
                             } else if (hotspots[i].getAttribute("data-hotspot-type") == "Info") {
-                                modal.style.background="#ff0000";
+                                modal.style.background="#292929";
                             }
+                            modal.style.border="solid 1px #ffffff";
                             var modalText = document.createElement("span");
                             modalText.innerHTML=hotspots[i].getAttribute("data-hotspot-title");  // Display the name of hotspot on modal header
                             modalText.style.marginLeft="6px";
@@ -972,10 +973,10 @@ var CarPicsSpinnerAPI = (function() {
                     thisObj.spinToToggleDoors(thisObj, thisObj.SpinPosition, true);
                     var button = document.getElementById(thisObj.divId+"door_open_button");
                     if (thisObj.displayDoorOpen) {
-                        button.getElementsByTagName("img")[0].setAttribute("src", "../carCloseWhite.png");
+                        button.getElementsByTagName("img")[0].setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/carCloseWhite.png");
                         button.getElementsByTagName("img")[0].setAttribute("title", "Open car doors");
                     } else {
-                        button.getElementsByTagName("img")[0].setAttribute("src", "../carOpenWhite.png");
+                        button.getElementsByTagName("img")[0].setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/carOpenWhite.png");
                         button.getElementsByTagName("img")[0].setAttribute("title", "Close car doors");
                     }
                     thisObj.displayDoorOpen = !thisObj.displayDoorOpen;
@@ -1173,21 +1174,22 @@ var CarPicsSpinnerAPI = (function() {
                         modal.style.left=100*50/overlayOffset.width + "%";
                     }
                     if (poi.type == "Damage") {
-                        var modalHeadBackground="#fffb00";
+                        var modalHeadBackground="#f4c430";
                         var modalHeadColor = "#333";
                     } else if (poi.type == "Feature") {
                         var modalHeadBackground="#0d82bf";
                         var modalHeadColor = "#EAEAEA";
                     } else if (poi.type == "Info") {
-                        var modalHeadBackground="#FB262D";
-                        var modalHeadColor = "#EAEAEA";
+                        var modalHeadBackground="#000000";
+                        var modalHeadColor = "#FFFFFF";
                     }
+                    modal.style.border="none";
                     modal.style.bottom=100*50/overlayOffset.height + "%";
                     if (poi.name =="Start Engine"){
                         modal.style.left = "";
                         modal.style.right = "";
                         modal.style.top = "";
-                        modal.style. bottom = "";
+                        modal.style.bottom = "";
                         modal.style.maxHeight="100%";
                         modal.style.height="100%";
                         modal.style.width = "100%";
@@ -1208,7 +1210,7 @@ var CarPicsSpinnerAPI = (function() {
                         "<head>"+
                         "<body style='background: transparent; cursor: default; overflow: hidden;'>"+
                             "<div style='color: "+ modalHeadColor +"; background: "+ modalHeadBackground +";"+
-                            "border-radius: 5px 5px 0 0; padding: 5px 5px 5px 15px;'>"+
+                            "border-radius: 8px 8px 0 0; padding: 5px 5px 5px 15px;'>"+
                                 "<span>"+ poi.name +
                                 "</span>"+
                                 "<span style='position: absolute; right: 15px; top: 5px;'>"+
@@ -1216,15 +1218,15 @@ var CarPicsSpinnerAPI = (function() {
                                     "</span>"+
                                 "</span>"+
                             "</div>"+
-                            "<div class='wscroll-lbar' style='padding: 15px; " + (!(poi.name=="Start Engine")?"max-height: 55%;":"height:100%;") + " overflow: auto; background: #111; color: #fff; border-radius: 0 0 5px 5px;'>"+
+                            "<div class='wscroll-lbar' style='padding: 15px; " + (!(poi.name=="Start Engine")?"max-height: 55%;":"height:100%;") + " overflow: hidden; background: #111; color: #fff; border-radius: 0 0 8px 8px;'>"+
                                 (!(poi.name=="Start Engine")?"<div style='white-space: pre-line;font-size: 0.7em;' id='"+divId+"modalBodyText'>"+(poi.notes.split("\n").slice(0,4).join("\n")||'No details.'):"")+
                                 (!(poi.name=="Start Engine")?"</div>":"")+
-                                (!(poi.name=="Start Engine")?(poi.notes.split("\n").length>5?("<div id='seeMore' style='text-align:center;color:blue;white-space: pre-line;font-size: 0.8em;'>Click to see more</div><div style='white-space: pre-line;font-size: 0.7em;display:none;' id='more'>"+(poi.notes.split("\n").slice(5).join("\n")+"</div>")):("")):"")+
+                                (!(poi.name=="Start Engine")?(poi.notes.split("\n").length>5?("<div id='seeMore' style='text-align:center;color:#b1b1b1;white-space: pre-line;font-size: 0.8em;'>Click to see more</div><div style='white-space: pre-line;font-size: 0.7em;display:none;' id='more'>"+(poi.notes.split("\n").slice(5).join("\n")+"</div>")):("")):"")+
                                 (poi.name=="Start Engine"?"<video id='carpicsvideoelement' preload onprogress='document.getElementById(\"startenginestatus\").style.width=(100*this.buffered.end(0) / this.duration+\"%\")' onended='exitFunction()' oncanplaythrough='document.getElementById(\"playbutton\").style.display=\"\";document.getElementById(\"startenginestatus\").parentElement.style.display=\"none\"' src='"+poi.sourceUrl+"' style='width:100%;'></video>":"")+
                             (poi.name=="Start Engine"?"<div style='width:100%;background-color:grey'>"+
                             "<div id='startenginestatus' style='margin-top:10px;width:0%;height:30px;background-color:green'></div>"+
                             "</div>":"")+
-                            "<img onclick='document.getElementById(\"carpicsvideoelement\").play();this.style.transform=\"rotate(90deg)\";this.style.webkitTransform=\"rotate(90deg)\";this.style.msTransform=\"rotate(90deg)\";var thisObj = this;setTimeout(function(){thisObj.style.transform=\"\";thisObj.style.webkitTransform=\"\";thisObj.style.msTransform=\"\";},500);' src='https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/Rotation/AprilDemo/carpics_360/Hotspot_key.png' id='playbutton' style='transition:all .5s; ;margin-top:10px;float:right;display:none;width:30px;height:30px;'>"+
+                            "<img onclick='document.getElementById(\"carpicsvideoelement\").play();this.style.transform=\"rotate(90deg)\";this.style.webkitTransform=\"rotate(90deg)\";this.style.msTransform=\"rotate(90deg)\";var thisObj = this;setTimeout(function(){thisObj.style.transform=\"\";thisObj.style.webkitTransform=\"\";thisObj.style.msTransform=\"\";},500);' src='https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_key.png' id='playbutton' style='transition:all .5s; ;margin-top:10px;float:right;display:none;width:30px;height:30px;'>"+
                             "</img>"+
                             "</div>"+
                             "<script>"+
@@ -1268,9 +1270,11 @@ var CarPicsSpinnerAPI = (function() {
                 }
                 for (var i=0; i<poi.length; i++) {
                     var div = document.createElement("div"); 
-                    div.style.width="3%";  // hotspot width
-                    div.style.height="0";  // hotspot height
-                    div.style.paddingBottom="3%";  // hotspot height
+                    div.style.width="7%";  // hotspot width
+                    div.style.height="0";
+                    div.style.paddingBottom="7%";  // hotspot height
+                    div.style.marginLeft="-3.5%";  // put on center
+                    div.style.marginTop="-3.5%";  // put on center
                     div.style.zIndex="21";
                     div.style.position="absolute";  // set hotspot position according to poi location
                     div.style.left=poi[i].x+"%";
@@ -1283,26 +1287,25 @@ var CarPicsSpinnerAPI = (function() {
                     var spanElement = document.createElement("span");
                     spanElement.style.position="absolute";
                     spanElement.style.height="100%";
+                    spanElement.style.width="100%";
                     if (poi[i].type == "Damage") {
-                        div.style.color="#fffb00";
                         var faIcon = document.createElement("img");
-                        faIcon.setAttribute("src", "../Hotspot_damage.png");
+                        faIcon.setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_damage.png");
                         setPseudoCSSClass(faIcon,"hotspotIcon");
                         spanElement.appendChild(faIcon);
                     } else if (poi[i].type == "Feature") {
                         var faIcon = document.createElement("img");
-                        faIcon.setAttribute("src", "../Hotspot_feature.png");
+                        faIcon.setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_feature.png");
                         setPseudoCSSClass(faIcon,"hotspotIcon");
                         spanElement.appendChild(faIcon);
                     } else if (poi[i].type == "Info") {
-                        div.style.color="#ff0000";
                         var faIcon = document.createElement("img");
-                        faIcon.setAttribute("src", "../Hotspot_info.png");
+                        faIcon.setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_info.png");
                         setPseudoCSSClass(faIcon,"hotspotIcon");
                         spanElement.appendChild(faIcon);
                     } else if (poi[i].type == "User") {
                         var faIcon = document.createElement("img");
-                        faIcon.setAttribute("src", "../Hotspot_user.png");
+                        faIcon.setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_user.png");
                         setPseudoCSSClass(faIcon,"hotspotIcon");
                         spanElement.appendChild(faIcon);
                     }
@@ -1328,10 +1331,10 @@ var CarPicsSpinnerAPI = (function() {
                             var y = position.height * poi.y / 100;
                             if (x<position.width-modalWidth-125){
                                 modal.style.left=x+"px";
-                                modal.style.marginLeft="5%";
+                                modal.style.marginLeft="7.5%"; // based on hotspot size
                             } else {
                                 modal.style.right=(position.width-x)+"px";
-                                modal.style.marginRight="5%";
+                                modal.style.marginRight="7.5%"; // based on hotspot size
                             }
                             if (y<position.height-modalHeight-25){
                                 modal.style.top=y+"px";
@@ -1355,16 +1358,12 @@ var CarPicsSpinnerAPI = (function() {
                             modalHead.style.height="30px";
                             // Set modal header color based on hotspot type
                             if (poi.type == "Damage") {
-                                document.getElementById('slideshow-'+poi.name+poi.x+poi.y).style.color = 'red';
                                 modalHead.style.background="#f4c430";
                                 modalHead.style.color="#333";
                             } else if (poi.type == "Feature") {
-                                //Turn red
-                                document.getElementById('slideshow-'+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "../Hotspot_feature.png");
                                 modalHead.style.background="#0d82bf";
                             } else if (poi.type == "Info") {
-                                document.getElementById('slideshow-'+poi.name+poi.x+poi.y).style.color = 'red';
-                                modalHead.style.background="#FB262D";
+                                modalHead.style.background="#000000";
                             } else if (poi.type == 'User') {
                                 modalHead.style.background="#5CB110";
                             }
@@ -1456,18 +1455,16 @@ var CarPicsSpinnerAPI = (function() {
                             modal.style.top=poi.y + "%";
                             // Set modal header color based on hotspot type
                             if (poi.type == "Damage") {
-                                document.getElementById('slideshow-'+poi.name+poi.x+poi.y).style.color = 'red';
-                                modal.style.background="#fffb00";
+                                modal.style.background="#f4c430";
                                 modal.style.color="#333";
                             } else if (poi.type == "Feature") {
-                                document.getElementById('slideshow-'+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "../Hotspot_feature.png");
                                 modal.style.background="#f4c430";
                             } else if (poi.type == "Info") {
-                                document.getElementById('slideshow-'+poi.name+poi.x+poi.y).style.color = 'red';
-                                modal.style.background="#FB262D";
+                                modal.style.background="#000000";
                             } else if (poi.type == "User") {
                                 modal.style.background="#5CB110";
                             }
+                            modal.style.border="solid 1px #ffffff";
                             var modalText = document.createElement("span");
                             modalText.innerHTML=poi.name;  // Display the name of hotspot on modal header
                             modalText.style.marginLeft="6px";
@@ -1496,7 +1493,7 @@ var CarPicsSpinnerAPI = (function() {
                         yaw:2*((poi[i].x/100)*180-90),
                         type:"info",
                         text:poi[i].name,
-                        cssClass:(poi[i].name=="Start Engine"?"daicon caricon ":"faicon caricon ") +  "icon-" + i,
+                        cssClass:(poi[i].name=="Start Engine"?"keyIcon caricon ":(poi[i].type=="Feature"?"featureIcon caricon ":"infoIcon caricon ")) +  "icon-" + i,
                     }
                     hotspots.push(hotspot);
                 }
@@ -1513,7 +1510,7 @@ var CarPicsSpinnerAPI = (function() {
                         thisObj.CurrentImage.HTMLElement.style.display = "block";
                         thisObj.panoramaView=false;
                         document.getElementById(thisObj.divId+"panoButton").setAttribute("title", "Enter panorama");
-                        document.getElementById(thisObj.divId+"panoButton").getElementsByTagName("img")[0].src="../seat.png";
+                        document.getElementById(thisObj.divId+"panoButton").getElementsByTagName("img")[0].src="https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/seat.png";
                         document.getElementById(thisObj.divId+"hotspot_button").style.display='';
                         document.getElementById(thisObj.divId+"door_open_button").style.display='';
                         document.getElementById(thisObj.divId+"door_open_button").style.display='';
@@ -1523,7 +1520,7 @@ var CarPicsSpinnerAPI = (function() {
                         document.getElementById(thisObj.divId+"buttonWrap").style.left='';
                     } else {
                         document.getElementById(thisObj.divId+"hotspot_button").style.display='none';
-                        document.getElementById(thisObj.divId+"panoButton").getElementsByTagName("img")[0].src="../carCloseBlack.png";
+                        document.getElementById(thisObj.divId+"panoButton").getElementsByTagName("img")[0].src="https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/carCloseBlack.png";
                         document.getElementById(thisObj.divId+"door_open_button").style.display='none';
                         document.getElementById(thisObj.divId+"door_open_button").style.display='none';
                         document.getElementById(thisObj.divId+"zoom_in_button").style.display='none';
@@ -1539,16 +1536,22 @@ var CarPicsSpinnerAPI = (function() {
                             thisObj.panoramaDiv.contentWindow.document.open();
                             thisObj.panoramaDiv.contentWindow.document.write('<head>'+
                                 '<style>html,body{margin:0px}'+
-                                ".faicon{"+
-                                    "width:29px;"+
-                                    "height:29px;"+
-                                    "background: url('https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/Rotation/MarchDemo/carpics_360/Hotspot_feature.png') 100% 100% no-repeat;"+
+                                ".featureIcon{"+
+                                    "width:7vw;"+
+                                    "height:7vw;"+
+                                    "background: url('https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_feature.png') 100% 100% no-repeat;"+
                                     "background-size: cover;"+
                                 "}"+
-                                ".daicon{"+
-                                    "width:29px;"+
-                                    "height:29px;"+
-                                    "background: url('https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/Rotation/AprilDemo/carpics_360/Hotspot_key.png') 100% 100% no-repeat;"+
+                                ".infoIcon{"+
+                                    "width:7vw;"+
+                                    "height:7vw;"+
+                                    "background: url('https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_info.png') 100% 100% no-repeat;"+
+                                    "background-size: cover;"+
+                                "}"+
+                                ".keyIcon{"+
+                                    "width:7vw;"+
+                                    "height:7vw;"+
+                                    "background: url('https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_key.png') 100% 100% no-repeat;"+
                                     "background-size: cover;"+
                                 "}"+
                                 '</style>'+
@@ -1561,6 +1564,7 @@ var CarPicsSpinnerAPI = (function() {
                                 '"panorama":"https://s3-us-west-2.amazonaws.com/cdn.carpics2p0.com/' + thisObj.Panorama[0].src+'",'+
                                 '"hotSpots":'+ makePanoHotspots(thisObj.Panorama[0].poi) + 
                                 '});' +
+                                'document.getElementsByClassName("pnlm-load-button")[0].click();'+ //fake click on 'Click to load panorama button'
                                 'setInterval(function(){var elements = document.getElementsByClassName("caricon");for(var i=0;i<elements.length;i++){'+
                                 'elements[i].onclick=function(event){window.parent.postMessage(event.currentTarget.className, "*")};'+
                                 '}},100);'+
@@ -1961,9 +1965,11 @@ var CarPicsSpinnerAPI = (function() {
             var poi = source.poi;
             for(var i=0;i<poi.length;i++){
                 var div = document.createElement("div");
-                div.style.width="3%";  // hotspot width
-                div.style.height="0";  // hotspot height
-                div.style.paddingBottom="3%";  // hotspot height
+                div.style.width="7%";  // hotspot width
+                div.style.height="0";
+                div.style.paddingBottom="7%";  // hotspot height
+                div.style.marginLeft="-3.5%";  // put on center
+                div.style.marginTop="-3.5%";  // put on center
                 div.style.zIndex="21";
                 div.style.position="absolute";  // set hotspot position according to poi location
                 div.style.left=poi[i].x+"%";
@@ -1976,21 +1982,20 @@ var CarPicsSpinnerAPI = (function() {
                 var spanElement = document.createElement("span");
                 spanElement.style.position="absolute";
                 spanElement.style.height="100%";
+                spanElement.style.width="100%";
                 if (poi[i].type == "Damage") {
-                    div.style.color="#fffb00";
                     var faIcon = document.createElement("img");
-                    faIcon.setAttribute("src", "../Hotspot_damage.png");
+                    faIcon.setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_damage.png");
                     setPseudoCSSClass(faIcon,"hotspotIcon");
                     spanElement.appendChild(faIcon);
                 } else if (poi[i].type == "Feature") {
                     var faIcon = document.createElement("img");
-                    faIcon.setAttribute("src", "../Hotspot_feature.png");
+                    faIcon.setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_feature.png");
                     setPseudoCSSClass(faIcon,"hotspotIcon");
                     spanElement.appendChild(faIcon);
                 } else if (poi[i].type == "Info") {
-                    div.style.color="#ff0000";
                     var faIcon = document.createElement("img");
-                    faIcon.setAttribute("src", "../Hotspot_info.png");
+                    faIcon.setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_info.png");
                     setPseudoCSSClass(faIcon,"hotspotIcon");
                     spanElement.appendChild(faIcon);
                 }
@@ -2006,18 +2011,16 @@ var CarPicsSpinnerAPI = (function() {
                         modal.style.top=poi.y + "%";
                         modal.style.overflowY="hidden";
                         // Set modal header color based on hotspot type
-                        // feature: "#0d82bf"; damage: "#fffb00"; info: "#ec9434"
+                        // feature: "#0d82bf"; damage: "#f4c430"; info: "#ec9434"
                         if (poi.type == "Damage") {
-                            document.getElementById(divId+poi.name+poi.x+poi.y).style.color = 'red';
                             modal.style.background="#f4c430";
                             modal.style.color="#333";
                         } else if (poi.type == "Feature") {
-                            document.getElementById(divId+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "../Hotspot_feature.png");
                             modal.style.background="#0d82bf";
                         } else if (poi.type == "Info") {
-                            document.getElementById(divId+poi.name+poi.x+poi.y).style.color = 'red';
-                            modal.style.background="#FB262D";
+                            modal.style.background="#000000";
                         }
+                        modal.style.border="solid 1px #ffffff";
                         var modalText = document.createElement("span");
                         modalText.innerHTML=poi.name;  // Display the name of hotspot on modal header
                         modalText.style.marginLeft="6px";
@@ -2033,16 +2036,15 @@ var CarPicsSpinnerAPI = (function() {
                             document.getElementById(divId+"modalHover").remove();
                         };
                         if (poi.type == "Damage") {
-                            document.getElementById(divId+poi.name+poi.x+poi.y).style.color ="#f4c430";
+                            document.getElementById(divId+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_damage.png");
                         } else if (poi.type == "Feature") {
-                            document.getElementById(divId+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "../Hotspot_feature.png");
+                            document.getElementById(divId+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_feature.png");
                         } else if (poi.type == "Info") {
-                            document.getElementById(divId+poi.name+poi.x+poi.y).style.color ="#ff0000";
+                            document.getElementById(divId+poi.name+poi.x+poi.y).getElementsByTagName("img")[0].setAttribute("src", "https://s3-us-west-2.amazonaws.com/resources.carpics2p0.com/OEM_Demos/Assets/Hotspot_info.png");
                         }
                     }
                 })(this.HTMLElement, poi[i]);
                 // // Display full detail modal when click on hotspot
-                // // Modal version 1: partly cover image (either on page level or inside image wrap div)
                 div.onclick = (function(element,poi,thisObj){
                     return function(event){
                         if(poi.type == "Feature"){
@@ -2174,14 +2176,14 @@ var CarPicsSpinnerAPI = (function() {
                             modal.style.left=100*50/overlayOffset.width + "%";
                         }
                         if (poi.type == "Damage") {
-                            var modalHeadBackground="#fffb00";
+                            var modalHeadBackground="#f4c430";
                             var modalHeadColor = "#333";
                         } else if (poi.type == "Feature") {
                             var modalHeadBackground="#0d82bf";
                             var modalHeadColor = "#EAEAEA";
                         } else if (poi.type == "Info") {
-                            var modalHeadBackground="#FB262D";
-                            var modalHeadColor = "#EAEAEA";
+                            var modalHeadBackground="#000000";
+                            var modalHeadColor = "#FFFFFF";
                         }
                         modal.style.bottom=100*50/overlayOffset.height + "%";
                         overlay.appendChild(modal);
@@ -2195,11 +2197,12 @@ var CarPicsSpinnerAPI = (function() {
                                         "width: 4px; background-color: transparent;}"+
                                     ".wscroll-lbar::-webkit-scrollbar-thumb{"+
                                         "background-color: #aaaaaaaa;}"+
+                                    "html, body{height:100%;}"+
                                 "</style>"+
                             "<head>"+
                             "<body style='background: transparent; cursor: default; overflow: hidden;'>"+
-                                "<div style='color: "+ modalHeadColor +"; background: "+ modalHeadBackground +";"+
-                                "border-radius: 5px 5px 0 0; padding: 5px 5px 5px 15px;'>"+
+                                "<div style='color: "+ modalHeadColor +"; background: "+ modalHeadBackground +"; opacity: 0.8;"+
+                                "border-radius: 8px 8px 0 0; padding: 5px 5px 5px 15px; border: solid 1px #ffffff; border-bottom: none;'>"+
                                     "<span>"+ poi.name +
                                     "</span>"+
                                     "<span style='position: absolute; right: 15px; top: 5px;'>"+
@@ -2207,11 +2210,11 @@ var CarPicsSpinnerAPI = (function() {
                                         "</span>"+
                                     "</span>"+
                                 "</div>"+
-                                "<div style='padding: 15px; " + ("Damage" == poi.type?"height: 400px;":"max-height: 55%;") +" overflow: hidden; background: #111; color: #fff; border-radius: 0 0 5px 5px;'><div class='wscroll-lbar' style='overflow-y: auto; " + ("Damage" == poi.type?"height: 400px;":"height: 80px;") +"'>"+
-                                    ((poi.type == "Damage" && poi.sourceUrl!=="" && typeof poi.sourceUrl!=="undefined")?("<a target='_blank' href='"+poi.sourceUrl+"'><img src='"+poi.sourceUrl+"' style='width:100%;margin-bottom:10px'></img></a>"):(""))+
+                                "<div style='padding: 15px; " + ("Damage" == poi.type?"height: 75%;":"max-height: 55%;") +" overflow: hidden; background: #5f5f5fcc; color: #fff; border-radius: 0 0 8px 8px;  border: solid 1px #ffffff; border-top: none;'><div class='wscroll-lbar' style='overflow-y: auto; " + ("Damage" == poi.type?"height: 100%;":"height: 80px;") +"'>"+
+                                    ((poi.type == "Damage" && poi.sourceUrl!=="" && typeof poi.sourceUrl!=="undefined")?("<img src='"+poi.sourceUrl+"' style='width:100%;margin-bottom:10px'></img>"):(""))+
                                     "<div style='white-space: pre-line;font-size: 0.75em;' id='"+divId+"modalBodyText'>"+(poi.notes.split("\n").slice(0,4).join("\n")||'No details.')+
                                     "</div>"+
-                                    ((poi.notes.split("\n").length>5)?("<div id='seeMore' style='text-align:center;color:#2B60DE;white-space: pre-line;font-size: 0.65em; margin-top: 0.3em; cursor: pointer;'>Click to see more</div><div style='white-space: pre-line;font-size: 0.75em;display:none;' id='more'>"+(poi.notes.split("\n").slice(5).join("\n")+"</div>")):(""))+
+                                    ((poi.notes.split("\n").length>5)?("<div id='seeMore' style='text-align:center;color:#b1b1b1;white-space: pre-line;font-size: 0.65em; margin-top: 0.3em; cursor: pointer;'>Click to see more</div><div style='white-space: pre-line;font-size: 0.75em;display:none;' id='more'>"+(poi.notes.split("\n").slice(5).join("\n")+"</div>")):(""))+
                                 "</div>"+
                                 "</div>"+
                                 "<script>"+
@@ -2230,147 +2233,6 @@ var CarPicsSpinnerAPI = (function() {
                         modal.contentWindow.window.thisObj = thisObj.parentObject;
                         modal.contentWindow.document.close();
 
-                        // Create full detail modal
-                        // var modal = document.createElement("div");
-                        // modal.setAttribute("id", divId+"popModal");
-                        // modal.style.width="40%";
-                        // modal.style.maxHeight="70%";
-                        // modal.style.position="absolute";
-                        // if (poi.x<=70){
-                        //     // if the hotspot is in left 70% of the image, display detail modal on right bottom corner
-                        //     modal.style.right="50px";
-                        // } else {
-                        //     // display detail modal on left bottom corner
-                        //     modal.style.left="50px";
-                        // }
-                        // modal.style.bottom="50px";
-                        // modal.style.background="#fff";
-                        // modal.style.borderRadius="8px";
-                        // modal.style.cursor="default";
-                        // modal.style.overflow="hidden";  // Enable scroll
-
-                        // modal.onclick = function(event) {
-                        //     event.stopPropagation();
-                        // }
-                        // modal.ondblclick = function(event) {
-                        //     event.stopPropagation();  // prevent spinner zoom-in
-                        // }
-                        // modal.onmousedown = function(event) {
-                        //     event.stopPropagation();  // prevent spin
-                        // }
-                        // modal.onmouseup = function(event) {
-                        //     event.stopPropagation();  // prevent spin
-                        // }
-                        // modal.onmousemove = function(event) {
-                        //     event.stopPropagation();  // prevent drag
-                        // }
-
-                        // // Define modal header section
-                        // var modalHead = document.createElement("div");
-                        // modalHead.style.color="#EAEAEA";  // set header text color to be almost-white
-                        // // Set modal header color based on hotspot type
-                        // if (poi.type == "Damage") {
-                        //     modalHead.style.background="#fffb00";   //feature: "#0d82bf"; damage: "#CA1246"
-                        //     modalHead.style.color = "#333";
-                        // } else if (poi.type == "Feature") {
-                        //     modalHead.style.background="#0d82bf";   //feature: "#0d82bf"; damage: "#CA1246"
-                        // } else if (poi.type == "Info") {
-                        //     modalHead.style.backgroundColor="#FB262D"; 
-                        // }
-                        
-                        // modalHead.style.borderRadius="5px 5px 0px 0px";
-                        // modalHead.style.fontSize="1em";
-                        // modalHead.style.padding="5px 5px 5px 15px";
-                        // modal.appendChild(modalHead);
-                        // var modalHeadText = document.createElement("span");
-                        // modalHeadText.style.marginRight="45px";
-                        // modalHeadText.innerHTML=poi.name;  // Display the name of hotspot on modal header
-                        // modalHead.appendChild(modalHeadText);
-                        // var modalHeadIcons = document.createElement("span");
-                        // modalHeadIcons.style.position="absolute";
-                        // modalHeadIcons.style.right="15px";   // Display modal-control-button on right
-                        // modalHeadIcons.style.top="5px";
-                        // modalHead.appendChild(modalHeadIcons);
-                        // // Create a cancel button on modal header to close modal
-                        // var modalCancelIcon = document.createElement("span");
-                        // modalCancelIcon.innerHTML="&#10005";  // Set icon to be 'x'
-                        // modalCancelIcon.setAttribute("id", divId+"modalCancelIcon");
-                        // // close modal when pressing on cancel button
-                        // modalCancelIcon.onclick=(function(overlay){
-                        //     document.getElementById(divId+"popModalContainer").remove();
-                        //     /** Uncomment below if we want blur background
-                        //     element.style["-webkit-filter"]="none";
-                        //     */
-                        //     document.getElementById(divId+"buttonWrap").style.opacity = 0.8;  // Display control buttons
-                        //     var listOfHotspots = element.getElementsByClassName("hotspot");
-                        //     for (var j=0; j<listOfHotspots.length; j++) {
-                        //         listOfHotspots[j].style.display = "block";  // show all hotspots
-                        //     };
-                        //     var titleModals = element.getElementsByClassName(""+divId+"hotspotsFullOpacityModal");
-                        //     for (var j=0; j<titleModals.length; j++) {
-                        //         // hide all
-                        //         titleModals[j].style.display = "block";
-                        //     };
-                        //     // Zoom out image
-                        //     setPseudoCSSClass(element,"zoomOutImage");
-                        //     thisObj.parentObject.CurrentImage.zoomIntensity = 1; // reset zoomIntensity
-                        //     thisObj.parentObject.zoomed = false;
-                        //     buttonElement = document.getElementById(thisObj.parentObject.divId+"zoom_in_button");
-                        //     while (buttonElement.firstChild) {
-                        //         buttonElement.removeChild(buttonElement.firstChild);
-                        //     }
-                        //     var zoomInFaIcon = document.createElement("i");
-                        //     zoomInFaIcon.className = "fas fa-search-plus fa-lg";
-                        //     buttonElement.appendChild(zoomInFaIcon);
-                        //     buttonElement.setAttribute("title", "Zoom in");
-                        // });
-                        // modalHeadIcons.appendChild(modalCancelIcon);
-
-                        // // Define modal body section
-                        // var modalBody = document.createElement("div");
-                        // modalBody.style.padding="15px";
-                        // modal.appendChild(modalBody);
-                        // modalBody.className="wscroll-lbar";
-                        // modalBody.style.maxHeight = '100px';
-                        // modalBody.style.overflowY = 'auto';
-                        // /** Uncomment below code if we want to display image in popup modal agian
-                        // // Display detail image (if provided)
-                        // if (poi.sourceUrl!=="" && typeof poi.sourceUrl!=="undefined") {
-                        //     // distinguish if the url is for image or video(mp4)
-                        //     var format = poi.sourceUrl.split(".");
-                        //     format = format[format.length-1];
-                        //     if (format==="mp4"||format==="MP4"||format==="MOV"||format==="mov") {
-                        //         // video
-                        //         var video = document.createElement("VIDEO");
-                        //         if (video.canPlayType("video/mp4")) {
-                        //             video.setAttribute("src",poi.sourceUrl);
-                        //         } else {
-                        //             // error handling
-                        //         }
-                        //         video.setAttribute("width", "100%");
-                        //         video.setAttribute("height", "100%");
-                        //         video.style.marginBottom="10px";
-                        //         video.setAttribute("controls", "controls");
-                        //         modalBody.appendChild(video);
-                        //     } else {
-                        //         // image
-                        //         var img = new Image();
-                        //         img.src=poi.sourceUrl;  // display the detail image of this hotspot
-                        //         img.style.width="100%";
-                        //         img.style.height="100%";
-                        //         img.style.marginBottom="10px";
-                        //         modalBody.appendChild(img);
-                        //     }
-                        // }
-                        // */
-                        // // Display detail notes (if provided)
-                        // if (poi.notes!=="" && typeof poi.notes!=="undefined") {
-                        //     var poiNotes = document.createElement("div");
-                        //     poiNotes.innerHTML=poi.notes;  // display the notes of this hotspot
-                        //     poiNotes.style.whiteSpace="pre-line";  // Keep line-breaks
-                        //     poiNotes.style.fontSize="0.7em";
-                        //     modalBody.appendChild(poiNotes);
-                        // }
                         // zoom in (or zoom out) image to 2x large of original size and move to desired position
                         var offset = element.getBoundingClientRect();
                         var parentOffset = element.parentElement.getBoundingClientRect();
@@ -2425,7 +2287,7 @@ var CarPicsSpinnerAPI = (function() {
                             } else if (poi.type == "Feature") {
                                 var lineColor="#0d82bf";   //feature: "#0d82bf"; damage: "#CA1246"
                             } else if (poi.type == "Info") {
-                                var lineColor="#FB262D";
+                                var lineColor="#FFFFFF";
                             }
                             var lineHeight = "2px";
                             var lineStyle = "solid";
@@ -2437,8 +2299,8 @@ var CarPicsSpinnerAPI = (function() {
                                 modalLineY = modalOffset.y-parentOffset.y;
 
                                 // start the line on right side of the hotspot in the middle
-                                hotspotLineX = poi.x*offset.width/100+offset.width*0.04+correctX;
-                                hotspotLineY = poi.y*offset.height/100+offset.width*0.02+correctY;
+                                hotspotLineX = poi.x*offset.width/100+offset.width*0.015+correctX;
+                                hotspotLineY = poi.y*offset.height/100+correctY;
 
                                 middleX = modalLineX - (modalLineX-hotspotLineX)*lineRatio-1;
                                 middleY = modalLineY;
@@ -2474,8 +2336,10 @@ var CarPicsSpinnerAPI = (function() {
                                             var timer = setInterval(function() {
                                                 steps++;
                                                 modal.style.opacity = 0.1 * steps;
+                                                console.log(modal.style.opacity);
                                                 // final opacity is final step * 0.1
-                                                if(steps >= 8) {
+                                                if(steps >= 10) {
+                                                    modal.style.opacity = 1;
                                                     clearInterval(timer);
                                                     timer = undefined;
                                                 }
@@ -2491,7 +2355,7 @@ var CarPicsSpinnerAPI = (function() {
 
                                 // start the line on left side of the hotspot in the middle
                                 hotspotLineX = poi.x*offset.width/100+correctX;
-                                hotspotLineY = poi.y*offset.height/100+offset.width*0.02+correctY;
+                                hotspotLineY = poi.y*offset.height/100+correctY;
 
                                 middleX = modalLineX + (hotspotLineX-modalLineX)*lineRatio;
                                 middleY = modalLineY;
@@ -2528,7 +2392,8 @@ var CarPicsSpinnerAPI = (function() {
                                                 steps++;
                                                 modal.style.opacity = 0.1 * steps;
                                                 // final opacity is final step * 0.1
-                                                if(steps >= 8) {
+                                                if(steps >= 10) {
+                                                    modal.style.opacity = 1;
                                                     clearInterval(timer);
                                                     timer = undefined;
                                                 }
